@@ -63,13 +63,6 @@ $brave.height                    = 30
 $brave.location                  = New-Object System.Drawing.Point(4,426)
 $brave.Font                      = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
-$firefox                         = New-Object system.Windows.Forms.Button
-$firefox.text                    = "Firefox"
-$firefox.width                   = 212
-$firefox.height                  = 30
-$firefox.location                = New-Object System.Drawing.Point(4,461)
-$firefox.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
 $7zip                            = New-Object system.Windows.Forms.Button
 $7zip.text                       = "7-Zip"
 $7zip.width                      = 211
@@ -97,13 +90,6 @@ $notepad.width                   = 212
 $notepad.height                  = 30
 $notepad.location                = New-Object System.Drawing.Point(3,831)
 $notepad.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$gchrome                         = New-Object system.Windows.Forms.Button
-$gchrome.text                    = "Google Chrome"
-$gchrome.width                   = 212
-$gchrome.height                  = 30
-$gchrome.location                = New-Object System.Drawing.Point(3,494)
-$gchrome.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $mpc                             = New-Object system.Windows.Forms.Button
 $mpc.text                        = "Media Player Classic"
@@ -672,22 +658,6 @@ $brave.Add_Click({
     winget install -e BraveSoftware.BraveBrowser | Out-Host
     if($?) { Write-Host "Installed Brave Browser" }
     $ResultText.text = "`r`n" + "Finished Installing Brave" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
-$firefox.Add_Click({
-    Write-Host "Installing Firefox"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing Firefox... Please Wait" 
-    winget install -e Mozilla.Firefox | Out-Host
-    if($?) { Write-Host "Installed Firefox" }
-    $ResultText.text = "`r`n" + "Finished Installing Firefox" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
-$gchrome.Add_Click({
-    Write-Host "Installing Google Chrome"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing Google Chrome... Please Wait" 
-    winget install -e Google.Chrome | Out-Host
-    if($?) { Write-Host "Installed Google Chrome" }
-    $ResultText.text = "`r`n" + "Finished Installing Google Chrome" + "`r`n" + "`r`n" + "Ready for Next Task"
 })
 
 $autohotkey.Add_Click({
