@@ -51,66 +51,15 @@ $Form.Icon                    = [System.Drawing.Icon]::FromHandle((New-Object Sy
 $Form.Width                   = $objImage.Width
 $Form.Height                  = $objImage.Height
 
+
 $Panel1                          = New-Object system.Windows.Forms.Panel
 $Panel1.height                   = 939
 $Panel1.width                    = 219
 $Panel1.location                 = New-Object System.Drawing.Point(6,54)
 
-$brave                           = New-Object system.Windows.Forms.Button
-$brave.text                      = "Brave Browser"
-$brave.width                     = 212
-$brave.height                    = 30
-$brave.location                  = New-Object System.Drawing.Point(4,426)
-$brave.Font                      = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
-$firefox                         = New-Object system.Windows.Forms.Button
-$firefox.text                    = "Firefox"
-$firefox.width                   = 212
-$firefox.height                  = 30
-$firefox.location                = New-Object System.Drawing.Point(4,461)
-$firefox.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$7zip                            = New-Object system.Windows.Forms.Button
-$7zip.text                       = "7-Zip"
-$7zip.width                      = 211
-$7zip.height                     = 30
-$7zip.location                   = New-Object System.Drawing.Point(4,102)
-$7zip.Font                       = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$gchrome                         = New-Object system.Windows.Forms.Button
-$gchrome.text                    = "Google Chrome"
-$gchrome.width                   = 212
-$gchrome.height                  = 30
-$gchrome.location                = New-Object System.Drawing.Point(3,494)
-$gchrome.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$vlc                             = New-Object system.Windows.Forms.Button
-$vlc.text                        = "VLC"
-$vlc.width                       = 212
-$vlc.height                      = 30
-$vlc.location                    = New-Object System.Drawing.Point(3,663)
-$vlc.Font                        = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$powertoys                       = New-Object system.Windows.Forms.Button
-$powertoys.text                  = "PowerToys"
-$powertoys.width                 = 211
-$powertoys.height                = 30
-$powertoys.location              = New-Object System.Drawing.Point(4,67)
-$powertoys.Font                  = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$winterminal                     = New-Object system.Windows.Forms.Button
-$winterminal.text                = "Windows Terminal"
-$winterminal.width               = 211
-$winterminal.height              = 30
-$winterminal.location            = New-Object System.Drawing.Point(3,32)
-$winterminal.Font                = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$vscode                          = New-Object system.Windows.Forms.Button
-$vscode.text                     = "VS Code"
-$vscode.width                    = 211
-$vscode.height                   = 30
-$vscode.location                 = New-Object System.Drawing.Point(4,797)
-$vscode.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+# ------------------------------------------------------------------------------------------------
+# Utilities Menu
 
 $Label2                          = New-Object system.Windows.Forms.Label
 $Label2.text                     = "Utilities"
@@ -119,6 +68,280 @@ $Label2.width                    = 25
 $Label2.height                   = 10
 $Label2.location                 = New-Object System.Drawing.Point(89,11)
 $Label2.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+
+
+# Windows Terminal
+
+$winterminal                     = New-Object system.Windows.Forms.Button
+$winterminal.text                = "Windows Terminal"
+$winterminal.width               = 211
+$winterminal.height              = 30
+$winterminal.location            = New-Object System.Drawing.Point(3,32)
+$winterminal.Font                = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$winterminal.Add_Click({
+    Write-Host "Installing New Windows Terminal"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing New Windows Terminal... Please Wait" 
+    winget install -e Microsoft.WindowsTerminal | Out-Host
+    if($?) { Write-Host "Installed New Windows Terminal" }
+    $ResultText.text = "`r`n" + "Finished Installing New Windows Terminal" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
+# PowerToys
+
+$powertoys                       = New-Object system.Windows.Forms.Button
+$powertoys.text                  = "PowerToys"
+$powertoys.width                 = 211
+$powertoys.height                = 30
+$powertoys.location              = New-Object System.Drawing.Point(4,67)
+$powertoys.Font                  = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$powertoys.Add_Click({
+    Write-Host "Installing Microsoft PowerToys"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing Microsoft PowerToys... Please Wait" 
+    winget install -e Microsoft.PowerToys | Out-Host
+    if($?) { Write-Host "Installed Microsoft PowerToys" }
+    $ResultText.text = "`r`n" + "Finished Installing Microsoft PowerToys" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
+# 7-Zip
+
+$7zip                            = New-Object system.Windows.Forms.Button
+$7zip.text                       = "7-Zip"
+$7zip.width                      = 211
+$7zip.height                     = 30
+$7zip.location                   = New-Object System.Drawing.Point(4,102)
+$7zip.Font                       = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$7zip.Add_Click({
+    Write-Host "Installing 7-Zip Compression Tool"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing 7-Zip Compression Tool... Please Wait" 
+    winget install -e 7zip.7zip | Out-Host
+    if($?) { Write-Host "Installed 7-Zip Compression Tool" }
+    $ResultText.text = "`r`n" + "Finished Installing 7-Zip Compression Tool" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
+# Etcher
+
+$etcher                          = New-Object system.Windows.Forms.Button
+$etcher.text                     = "Etcher USB Creator"
+$etcher.width                    = 211
+$etcher.height                   = 30
+$etcher.location                 = New-Object System.Drawing.Point(4,136)
+$etcher.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$etcher.Add_Click({
+    Write-Host "Installing Etcher USB Imager"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing Etcher USB Imager... Please Wait" 
+    winget install -e Balena.Etcher | Out-Host
+    Write-Host "Installed Etcher USB Imager"
+    $ResultText.text = "`r`n" + "Finished Installing Etcher USB Imager" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
+# Putty
+
+$putty                           = New-Object system.Windows.Forms.Button
+$putty.text                      = "PuTTY & WinSCP"
+$putty.width                     = 211
+$putty.height                    = 30
+$putty.location                  = New-Object System.Drawing.Point(3,302)
+$putty.Font                      = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$putty.Add_Click({
+    Write-Host "Installing PuTTY & WinSCP"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing PuTTY & WinSCP... Please Wait" 
+    winget install -e PuTTY.PuTTY | Out-Host
+    winget install -e WinSCP.WinSCP | Out-Host
+    Write-Host "Installed PuTTY & WinSCP"
+    $ResultText.text = "`r`n" + "Finished Installing PuTTY & WinSCP" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
+# Advanced IP Scanner
+
+$advancedipscanner               = New-Object system.Windows.Forms.Button
+$advancedipscanner.text          = "Advanced IP Scanner"
+$advancedipscanner.width         = 211
+$advancedipscanner.height        = 30
+$advancedipscanner.location      = New-Object System.Drawing.Point(3,335)
+$advancedipscanner.Font          = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$advancedipscanner.Add_Click({
+    Write-Host "Installing Advanced IP Scanner"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing Advanced IP Scanner... Please Wait" 
+    winget install -e Famatech.AdvancedIPScanner | Out-Host
+    Write-Host "Installed Advanced IP Scanner"
+    $ResultText.text = "`r`n" + "Finished Installing Advanced IP Scanner" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
+# ------------------------------------------------------------------------------------------------
+# Web Browsers Menu
+$Label9                          = New-Object system.Windows.Forms.Label
+$Label9.text                     = "Web Browsers"
+$Label9.AutoSize                 = $true
+$Label9.width                    = 25
+$Label9.height                   = 10
+$Label9.location                 = New-Object System.Drawing.Point(67,406)
+$Label9.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+
+
+# Brave
+
+$brave                           = New-Object system.Windows.Forms.Button
+$brave.text                      = "Brave Browser"
+$brave.width                     = 212
+$brave.height                    = 30
+$brave.location                  = New-Object System.Drawing.Point(4,426)
+$brave.Font                      = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$brave.Add_Click({
+    Write-Host "Installing Brave Browser"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing Brave... Please Wait" 
+    winget install -e BraveSoftware.BraveBrowser | Out-Host
+    if($?) { Write-Host "Installed Brave Browser" }
+    $ResultText.text = "`r`n" + "Finished Installing Brave" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
+# Firefox
+
+$firefox                         = New-Object system.Windows.Forms.Button
+$firefox.text                    = "Firefox"
+$firefox.width                   = 212
+$firefox.height                  = 30
+$firefox.location                = New-Object System.Drawing.Point(4,461)
+$firefox.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$firefox.Add_Click({
+    Write-Host "Installing Firefox"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing Firefox... Please Wait" 
+    winget install -e Mozilla.Firefox | Out-Host
+    if($?) { Write-Host "Installed Firefox" }
+    $ResultText.text = "`r`n" + "Finished Installing Firefox" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
+# Chrome
+
+$gchrome                         = New-Object system.Windows.Forms.Button
+$gchrome.text                    = "Google Chrome"
+$gchrome.width                   = 212
+$gchrome.height                  = 30
+$gchrome.location                = New-Object System.Drawing.Point(3,494)
+$gchrome.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$gchrome.Add_Click({
+    Write-Host "Installing Google Chrome"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing Google Chrome... Please Wait" 
+    winget install -e Google.Chrome | Out-Host
+    if($?) { Write-Host "Installed Google Chrome" }
+    $ResultText.text = "`r`n" + "Finished Installing Google Chrome" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
+# ------------------------------------------------------------------------------------------------
+# Video and Image Menu
+$Label8                          = New-Object system.Windows.Forms.Label
+$Label8.text                     = "Video and Image Tools"
+$Label8.AutoSize                 = $true
+$Label8.width                    = 25
+$Label8.height                   = 10
+$Label8.location                 = New-Object System.Drawing.Point(41,537)
+$Label8.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+
+
+# GIMP
+
+$gimp                            = New-Object system.Windows.Forms.Button
+$gimp.text                       = "GIMP (Image Editor)"
+$gimp.width                      = 212
+$gimp.height                     = 30
+$gimp.location                   = New-Object System.Drawing.Point(4,629)
+$gimp.Font                       = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$gimp.Add_Click({
+    Write-Host "Installing Gimp Image Editor"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing Gimp Image Editor... Please Wait" 
+    winget install -e GIMP.GIMP | Out-Host
+    Write-Host "Installed Gimp Image Editor"
+    $ResultText.text = "`r`n" + "Finished Installing Gimp Image Editor" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
+# VLC
+
+$vlc                             = New-Object system.Windows.Forms.Button
+$vlc.text                        = "VLC"
+$vlc.width                       = 212
+$vlc.height                      = 30
+$vlc.location                    = New-Object System.Drawing.Point(3,663)
+$vlc.Font                        = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$vlc.Add_Click({
+    Write-Host "Installing VLC Media Player"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing VLC Media Player... Please Wait" 
+    winget install -e VideoLAN.VLC | Out-Host
+    if($?) { Write-Host "Installed VLC Media Player" }
+    $ResultText.text = "`r`n" + "Finished Installing VLC Media Player" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
+# ------------------------------------------------------------------------------------------------
+# Coding Menu
+
+$Label7                          = New-Object system.Windows.Forms.Label
+$Label7.text                     = "Coding Tools"
+$Label7.AutoSize                 = $true
+$Label7.width                    = 25
+$Label7.height                   = 10
+$Label7.location                 = New-Object System.Drawing.Point(60,740)
+$Label7.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+
+
+# Github Desktop
+
+$githubdesktop                   = New-Object system.Windows.Forms.Button
+$githubdesktop.text              = "Github Desktop"
+$githubdesktop.width             = 211
+$githubdesktop.height            = 30
+$githubdesktop.location          = New-Object System.Drawing.Point(4,763)
+$githubdesktop.Font              = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$githubdesktop.Add_Click({
+    Write-Host "Installing Git and GitHub Desktop"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing Git and GitHub Desktop... Please Wait" 
+    winget install -e Git.Git | Out-Host
+    winget install -e GitHub.GitHubDesktop | Out-Host
+    Write-Host "Installed Git and Github Desktop"
+    $ResultText.text = "`r`n" + "Finished Installing Git and GitHub Desktop" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
+# VS Code
+
+$vscode                          = New-Object system.Windows.Forms.Button
+$vscode.text                     = "VS Code"
+$vscode.width                    = 211
+$vscode.height                   = 30
+$vscode.location                 = New-Object System.Drawing.Point(4,797)
+$vscode.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$vscode.Add_Click({
+    Write-Host "Installing Visual Studio Code"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing Visual Studio Code... Please Wait" 
+    winget install -e Microsoft.VisualStudioCode --source winget | Out-Host
+    if($?) { Write-Host "Installed Visual Studio Code" }
+    $ResultText.text = "`r`n" + "Finished Installing Visual Studio Code" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
+# ------------------------------------------------------------------------------------------------
+# Not finished Menu
 
 $Panel2                          = New-Object system.Windows.Forms.Panel
 $Panel2.height                   = 938
@@ -187,13 +410,6 @@ $Panel3.height                   = 381
 $Panel3.width                    = 220
 $Panel3.location                 = New-Object System.Drawing.Point(464,54)
 
-$gimp                            = New-Object system.Windows.Forms.Button
-$gimp.text                       = "GIMP (Image Editor)"
-$gimp.width                      = 212
-$gimp.height                     = 30
-$gimp.location                   = New-Object System.Drawing.Point(4,629)
-$gimp.Font                       = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
 $removebloat                     = New-Object system.Windows.Forms.Button
 $removebloat.text                = "Remove MS Store Apps"
 $removebloat.width               = 204
@@ -223,58 +439,6 @@ $Label5.width                    = 25
 $Label5.height                   = 10
 $Label5.location                 = New-Object System.Drawing.Point(44,877)
 $Label5.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',8)
-
-$Label7                          = New-Object system.Windows.Forms.Label
-$Label7.text                     = "Document Tools"
-$Label7.AutoSize                 = $true
-$Label7.width                    = 25
-$Label7.height                   = 10
-$Label7.location                 = New-Object System.Drawing.Point(60,740)
-$Label7.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
-
-$Label8                          = New-Object system.Windows.Forms.Label
-$Label8.text                     = "Video and Image Tools"
-$Label8.AutoSize                 = $true
-$Label8.width                    = 25
-$Label8.height                   = 10
-$Label8.location                 = New-Object System.Drawing.Point(41,537)
-$Label8.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
-
-$Label9                          = New-Object system.Windows.Forms.Label
-$Label9.text                     = "Web Browsers"
-$Label9.AutoSize                 = $true
-$Label9.width                    = 25
-$Label9.height                   = 10
-$Label9.location                 = New-Object System.Drawing.Point(67,406)
-$Label9.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
-
-$advancedipscanner               = New-Object system.Windows.Forms.Button
-$advancedipscanner.text          = "Advanced IP Scanner"
-$advancedipscanner.width         = 211
-$advancedipscanner.height        = 30
-$advancedipscanner.location      = New-Object System.Drawing.Point(3,335)
-$advancedipscanner.Font          = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$putty                           = New-Object system.Windows.Forms.Button
-$putty.text                      = "PuTTY & WinSCP"
-$putty.width                     = 211
-$putty.height                    = 30
-$putty.location                  = New-Object System.Drawing.Point(3,302)
-$putty.Font                      = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$etcher                          = New-Object system.Windows.Forms.Button
-$etcher.text                     = "Etcher USB Creator"
-$etcher.width                    = 211
-$etcher.height                   = 30
-$etcher.location                 = New-Object System.Drawing.Point(4,136)
-$etcher.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$githubdesktop                   = New-Object system.Windows.Forms.Button
-$githubdesktop.text              = "Github Desktop"
-$githubdesktop.width             = 211
-$githubdesktop.height            = 30
-$githubdesktop.location          = New-Object System.Drawing.Point(4,763)
-$githubdesktop.Font              = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $discord                         = New-Object system.Windows.Forms.Button
 $discord.text                    = "Discord"
@@ -353,30 +517,6 @@ $Panel2.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$re
 $Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix))
 $Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower))
 
-$brave.Add_Click({
-    Write-Host "Installing Brave Browser"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing Brave... Please Wait" 
-    winget install -e BraveSoftware.BraveBrowser | Out-Host
-    if($?) { Write-Host "Installed Brave Browser" }
-    $ResultText.text = "`r`n" + "Finished Installing Brave" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
-$firefox.Add_Click({
-    Write-Host "Installing Firefox"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing Firefox... Please Wait" 
-    winget install -e Mozilla.Firefox | Out-Host
-    if($?) { Write-Host "Installed Firefox" }
-    $ResultText.text = "`r`n" + "Finished Installing Firefox" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
-$gchrome.Add_Click({
-    Write-Host "Installing Google Chrome"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing Google Chrome... Please Wait" 
-    winget install -e Google.Chrome | Out-Host
-    if($?) { Write-Host "Installed Google Chrome" }
-    $ResultText.text = "`r`n" + "Finished Installing Google Chrome" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
 $discord.Add_Click({
     Write-Host "Installing Discord"
     $ResultText.text = "`r`n" +"`r`n" + "Installing Discord... Please Wait" 
@@ -385,87 +525,6 @@ $discord.Add_Click({
     $ResultText.text = "`r`n" + "Finished Installing Discord" + "`r`n" + "`r`n" + "Ready for Next Task"
 })
 
-$vlc.Add_Click({
-    Write-Host "Installing VLC Media Player"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing VLC Media Player... Please Wait" 
-    winget install -e VideoLAN.VLC | Out-Host
-    if($?) { Write-Host "Installed VLC Media Player" }
-    $ResultText.text = "`r`n" + "Finished Installing VLC Media Player" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
-$7zip.Add_Click({
-    Write-Host "Installing 7-Zip Compression Tool"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing 7-Zip Compression Tool... Please Wait" 
-    winget install -e 7zip.7zip | Out-Host
-    if($?) { Write-Host "Installed 7-Zip Compression Tool" }
-    $ResultText.text = "`r`n" + "Finished Installing 7-Zip Compression Tool" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
-$vscode.Add_Click({
-    Write-Host "Installing Visual Studio Code"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing Visual Studio Code... Please Wait" 
-    winget install -e Microsoft.VisualStudioCode --source winget | Out-Host
-    if($?) { Write-Host "Installed Visual Studio Code" }
-    $ResultText.text = "`r`n" + "Finished Installing Visual Studio Code" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
-$winterminal.Add_Click({
-    Write-Host "Installing New Windows Terminal"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing New Windows Terminal... Please Wait" 
-    winget install -e Microsoft.WindowsTerminal | Out-Host
-    if($?) { Write-Host "Installed New Windows Terminal" }
-    $ResultText.text = "`r`n" + "Finished Installing New Windows Terminal" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
-$powertoys.Add_Click({
-    Write-Host "Installing Microsoft PowerToys"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing Microsoft PowerToys... Please Wait" 
-    winget install -e Microsoft.PowerToys | Out-Host
-    if($?) { Write-Host "Installed Microsoft PowerToys" }
-    $ResultText.text = "`r`n" + "Finished Installing Microsoft PowerToys" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
-$githubdesktop.Add_Click({
-    Write-Host "Installing Git and GitHub Desktop"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing Git and GitHub Desktop... Please Wait" 
-    winget install -e Git.Git | Out-Host
-    winget install -e GitHub.GitHubDesktop | Out-Host
-    Write-Host "Installed Git and Github Desktop"
-    $ResultText.text = "`r`n" + "Finished Installing Git and GitHub Desktop" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
-$etcher.Add_Click({
-    Write-Host "Installing Etcher USB Imager"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing Etcher USB Imager... Please Wait" 
-    winget install -e Balena.Etcher | Out-Host
-    Write-Host "Installed Etcher USB Imager"
-    $ResultText.text = "`r`n" + "Finished Installing Etcher USB Imager" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
-$putty.Add_Click({
-    Write-Host "Installing PuTTY & WinSCP"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing PuTTY & WinSCP... Please Wait" 
-    winget install -e PuTTY.PuTTY | Out-Host
-    winget install -e WinSCP.WinSCP | Out-Host
-    Write-Host "Installed PuTTY & WinSCP"
-    $ResultText.text = "`r`n" + "Finished Installing PuTTY & WinSCP" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
-$advancedipscanner.Add_Click({
-    Write-Host "Installing Advanced IP Scanner"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing Advanced IP Scanner... Please Wait" 
-    winget install -e Famatech.AdvancedIPScanner | Out-Host
-    Write-Host "Installed Advanced IP Scanner"
-    $ResultText.text = "`r`n" + "Finished Installing Advanced IP Scanner" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
-$gimp.Add_Click({
-    Write-Host "Installing Gimp Image Editor"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing Gimp Image Editor... Please Wait" 
-    winget install -e GIMP.GIMP | Out-Host
-    Write-Host "Installed Gimp Image Editor"
-    $ResultText.text = "`r`n" + "Finished Installing Gimp Image Editor" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
 
 $Bloatware = @(
     #Unnecessary Windows 10 AppX Apps
