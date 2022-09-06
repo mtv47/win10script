@@ -653,7 +653,7 @@ $libreoffice.Font                = New-Object System.Drawing.Font('Microsoft San
 $libreoffice.Add_Click({
     Write-Host "Installing LibreOffice"
     $ResultText.text = "`r`n" +"`r`n" + "Installing LibreOffice... Please Wait" 
-    winget install -e LibreOffice.LibreOffice | Out-Host
+    winget install -e TheDocumentFoundation.LibreOffice | Out-Host
     if($?) { Write-Host "Installed LibreOffice" }
     $ResultText.text = "`r`n" + "Finished Installing LibreOffice" + "`r`n" + "`r`n" + "Ready for Next Task"
 })
