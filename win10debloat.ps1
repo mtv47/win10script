@@ -393,7 +393,7 @@ $Label8.text                     = "Video and Image Tools"
 $Label8.AutoSize                 = $true
 $Label8.width                    = 25
 $Label8.height                   = 10
-$Label8.location                 = New-Object System.Drawing.Point(41,677)
+$Label8.location                 = New-Object System.Drawing.Point(41,687)
 $Label8.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
 
 
@@ -403,7 +403,7 @@ $gimp                            = New-Object system.Windows.Forms.Button
 $gimp.text                       = "GIMP (Image Editor)"
 $gimp.width                      = 212
 $gimp.height                     = 30
-$gimp.location                   = New-Object System.Drawing.Point(3,701)
+$gimp.location                   = New-Object System.Drawing.Point(3,711)
 $gimp.Font                       = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $gimp.Add_Click({
@@ -421,7 +421,7 @@ $vlc                             = New-Object system.Windows.Forms.Button
 $vlc.text                        = "VLC"
 $vlc.width                       = 212
 $vlc.height                      = 30
-$vlc.location                    = New-Object System.Drawing.Point(4,735)
+$vlc.location                    = New-Object System.Drawing.Point(4,745)
 $vlc.Font                        = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $vlc.Add_Click({
@@ -439,7 +439,7 @@ $spotify                         = New-Object system.Windows.Forms.Button
 $spotify.text                    = "Spotify"
 $spotify.width                   = 212
 $spotify.height                  = 30
-$spotify.location                = New-Object System.Drawing.Point(4,769)
+$spotify.location                = New-Object System.Drawing.Point(4,779)
 $spotify.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $spotify.Add_Click({
