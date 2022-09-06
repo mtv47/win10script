@@ -266,14 +266,14 @@ $etcher                          = New-Object system.Windows.Forms.Button
 $etcher.text                     = "Etcher USB Creator"
 $etcher.width                    = 211
 $etcher.height                   = 30
-$etcher.location                 = New-Object System.Drawing.Point(3,269)
+$etcher.location                 = New-Object System.Drawing.Point(4,136)
 $etcher.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $githubdesktop                   = New-Object system.Windows.Forms.Button
 $githubdesktop.text              = "Github Desktop"
 $githubdesktop.width             = 211
 $githubdesktop.height            = 30
-$githubdesktop.location          = New-Object System.Drawing.Point(3,203)
+$githubdesktop.location          = New-Object System.Drawing.Point(4,763)
 $githubdesktop.Font              = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $discord                         = New-Object system.Windows.Forms.Button
