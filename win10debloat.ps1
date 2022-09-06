@@ -631,6 +631,51 @@ $superposition.Add_Click({
     $ResultText.text = "`r`n" + "Finished Installing Unigine Superposition" + "`r`n" + "`r`n" + "Ready for Next Task"
 })
 
+# ------------------------------------------------------------------------------------------------
+# Documents Tools Menu
+
+$Label13                         = New-Object System.Windows.Forms.Label
+$Label13.text                    = "Documents Tools"
+$Label13.width                   = 230
+$Label13.height                  = 25
+$Label13.location                = New-Object System.Drawing.Point(57,280)
+$Label13.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+
+# LibreOffice
+
+$libreoffice                     = New-Object system.Windows.Forms.Button
+$libreoffice.text                = "LibreOffice"
+$libreoffice.width               = 211
+$libreoffice.height              = 30
+$libreoffice.location            = New-Object System.Drawing.Point(3,308)
+$libreoffice.Font                = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$libreoffice.Add_Click({
+    Write-Host "Installing LibreOffice"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing LibreOffice... Please Wait" 
+    winget install -e LibreOffice.LibreOffice | Out-Host
+    if($?) { Write-Host "Installed LibreOffice" }
+    $ResultText.text = "`r`n" + "Finished Installing LibreOffice" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+# Obsidian
+
+$obsidian                        = New-Object system.Windows.Forms.Button
+$obsidian.text                   = "Obsidian"
+$obsidian.width                  = 211
+$obsidian.height                 = 30
+$obsidian.location               = New-Object System.Drawing.Point(3,342)
+$obsidian.Font                   = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$obsidian.Add_Click({
+    Write-Host "Installing Obsidian"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing Obsidian... Please Wait" 
+    winget install -e Obsidian.Obsidian | Out-Host
+    if($?) { Write-Host "Installed Obsidian" }
+    $ResultText.text = "`r`n" + "Finished Installing Obsidian" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
 
 # ------------------------------------------------------------------------------------------------
 # System Menu
