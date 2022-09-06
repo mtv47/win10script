@@ -456,13 +456,6 @@ $NFS.height                      = 30
 $NFS.location                    = New-Object System.Drawing.Point(4,57)
 $NFS.Font                        = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
-$disableupdates                  = New-Object system.Windows.Forms.Button
-$disableupdates.text             = "Disable Update Services"
-$disableupdates.width            = 300
-$disableupdates.height           = 30
-$disableupdates.location         = New-Object System.Drawing.Point(23,292)
-$disableupdates.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
-
 $Label12                         = New-Object system.Windows.Forms.Label
 $Label12.text                    = "NOT RECOMMENDED!!!"
 $Label12.AutoSize                = $true
@@ -495,7 +488,7 @@ $restorepower.Font               = New-Object System.Drawing.Font('Microsoft San
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$PictureBox1,$Label1,$Panel3,$ResultText,$Label10,$Label11))
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$everythingsearch,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord))
 $Panel2.controls.AddRange(@($actioncenter,$darkmode,$performancefx,$lightmode,$EActionCenter,$HTrayIcons,$EClipboardHistory,$ELocation,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx,$STrayIcons,$EHibernation))
-$Panel4.controls.AddRange(@($defaultwindowsupdate,$securitywindowsupdate,$Label16,$Label17,$Label18,$Label19,$windowsupdatefix,$disableupdates,$Label12))
+$Panel4.controls.AddRange(@($defaultwindowsupdate,$securitywindowsupdate,$Label16,$Label17,$Label18,$Label19,$windowsupdatefix,$Label12))
 $Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$NFS,$Virtualization,$oldpower,$restorepower))
 
 $brave.Add_Click({
@@ -1135,92 +1128,6 @@ $windowsupdatefix.Add_Click({
     Write-Host "Process complete. Please reboot your computer."
     $ResultText.text = "`r`n" +"`r`n" + "Process complete. Please reboot your computer."
 
-})
-
-$disableupdates.Add_Click({
-
-    # Source: https://github.com/rgl/windows-vagrant/blob/master/disable-windows-updates.ps1
-    Set-StrictMode -Version Latest
-$ProgressPreference = 'SilentlyContinue'
-$ErrorActionPreference = 'Stop'
-trap {
-    Write-Host
-    Write-Host "ERROR: $_"
-    Write-Host (($_.ScriptStackTrace -split '\r?\n') -replace '^(.*)$','ERROR: $1')
-    Write-Host (($_.Exception.ToString() -split '\r?\n') -replace '^(.*)$','ERROR EXCEPTION: $1')
-    Write-Host
-    Write-Host 'Sleeping for 60m to give you time to look around the virtual machine before self-destruction...'
-    Start-Sleep -Seconds (60*60)
-    Exit 1
-}
-
-# disable automatic updates.
-# XXX this does not seem to work anymore.
-# see How to configure automatic updates by using Group Policy or registry settings
-#     at https://support.microsoft.com/en-us/help/328010
-function New-Directory($path) {
-    $p, $components = $path -split '[\\/]'
-    $components | ForEach-Object {
-        $p = "$p\$_"
-        if (!(Test-Path $p)) {
-            New-Item -ItemType Directory $p | Out-Null
-        }
-    }
-    $null
-}
-$auPath = 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU'
-New-Directory $auPath 
-# set NoAutoUpdate.
-# 0: Automatic Updates is enabled (default).
-# 1: Automatic Updates is disabled.
-New-ItemProperty `
-    -Path $auPath `
-    -Name NoAutoUpdate `
-    -Value 1 `
-    -PropertyType DWORD `
-    -Force `
-    | Out-Null
-# set AUOptions.
-# 1: Keep my computer up to date has been disabled in Automatic Updates.
-# 2: Notify of download and installation.
-# 3: Automatically download and notify of installation.
-# 4: Automatically download and scheduled installation.
-New-ItemProperty `
-    -Path $auPath `
-    -Name AUOptions `
-    -Value 1 `
-    -PropertyType DWORD `
-    -Force `
-    | Out-Null
-
-# disable Windows Update Delivery Optimization.
-# NB this applies to Windows 10.
-# 0: Disabled
-# 1: PCs on my local network
-# 3: PCs on my local network, and PCs on the Internet
-$deliveryOptimizationPath = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config'
-if (Test-Path $deliveryOptimizationPath) {
-    New-ItemProperty `
-        -Path $deliveryOptimizationPath `
-        -Name DODownloadMode `
-        -Value 0 `
-        -PropertyType DWORD `
-        -Force `
-        | Out-Null
-}
-# Service tweaks for Windows Update
-
-$services = @(
-    "BITS"
-    "wuauserv"
-)
-
-foreach ($service in $services) {
-    # -ErrorAction SilentlyContinue is so it doesn't write an error to stdout if a service doesn't exist
-
-    Write-Host "Setting $service StartupType to Disabled"
-    Get-Service -Name $service -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled
-}
 })
 
 [void]$Form.ShowDialog()
