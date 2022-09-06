@@ -498,13 +498,6 @@ $urlfixwinstartup.height         = 30
 $urlfixwinstartup.location       = New-Object System.Drawing.Point(646,702)
 $urlfixwinstartup.Font           = New-Object System.Drawing.Font('Microsoft Sans Serif',10)
 
-$urlremovevirus                  = New-Object system.Windows.Forms.Button
-$urlremovevirus.text             = "Clean Viruses"
-$urlremovevirus.width            = 232
-$urlremovevirus.height           = 30
-$urlremovevirus.location         = New-Object System.Drawing.Point(646,745)
-$urlremovevirus.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',10)
-
 $urlcreateiso                    = New-Object system.Windows.Forms.Button
 $urlcreateiso.text               = "Create Custom ISO"
 $urlcreateiso.width              = 232
@@ -597,7 +590,7 @@ $restorepower.height             = 30
 $restorepower.location           = New-Object System.Drawing.Point(4,159)
 $restorepower.Font               = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
-$Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$PictureBox1,$Label1,$Panel3,$ResultText,$Label10,$Label11,$urlfixwinstartup,$urlremovevirus,$urlcreateiso))
+$Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$PictureBox1,$Label1,$Panel3,$ResultText,$Label10,$Label11,$urlfixwinstartup,$urlcreateiso))
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$everythingsearch,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$translucenttb,$githubdesktop,$discord))
 $Panel2.controls.AddRange(@($backgroundapps,$cortana,$actioncenter,$darkmode,$performancefx,$onedrive,$lightmode,$essentialundo,$EActionCenter,$ECortana,$RBackgroundApps,$HTrayIcons,$EClipboardHistory,$ELocation,$InstallOneDrive,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx,$STrayIcons,$EHibernation,$dualboottime))
 $Panel4.controls.AddRange(@($defaultwindowsupdate,$securitywindowsupdate,$Label16,$Label17,$Label18,$Label19,$windowsupdatefix,$disableupdates,$enableupdates,$Label12))
@@ -657,10 +650,6 @@ $vscode.Add_Click({
     winget install -e Microsoft.VisualStudioCode --source winget | Out-Host
     if($?) { Write-Host "Installed Visual Studio Code" }
     $ResultText.text = "`r`n" + "Finished Installing Visual Studio Code" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
-$urlremovevirus.Add_Click({
-    Start-Process "https://youtu.be/CHtZ9-9ch2w"
 })
 
 $urlfixwinstartup.Add_Click({
