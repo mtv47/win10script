@@ -435,13 +435,6 @@ $oldsystempanel.height           = 30
 $oldsystempanel.location         = New-Object System.Drawing.Point(5,298)
 $oldsystempanel.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
-$NFS                             = New-Object system.Windows.Forms.Button
-$NFS.text                        = "Enable NFS"
-$NFS.width                       = 211
-$NFS.height                      = 30
-$NFS.location                    = New-Object System.Drawing.Point(4,57)
-$NFS.Font                        = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
 $Label12                         = New-Object system.Windows.Forms.Label
 $Label12.text                    = "NOT RECOMMENDED!!!"
 $Label12.AutoSize                = $true
@@ -468,7 +461,7 @@ $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$PictureBox1,
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$everythingsearch,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord))
 $Panel2.controls.AddRange(@($actioncenter,$darkmode,$performancefx,$lightmode,$EActionCenter,$HTrayIcons,$EClipboardHistory,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx,$STrayIcons))
 $Panel4.controls.AddRange(@($defaultwindowsupdate,$securitywindowsupdate,$Label16,$Label17,$Label18,$Label19,$windowsupdatefix,$Label12))
-$Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$NFS,$oldpower,$restorepower))
+$Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower,$restorepower))
 
 $brave.Add_Click({
     Write-Host "Installing Brave Browser"
@@ -956,18 +949,6 @@ $restorepower.Add_Click({
     powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
     Write-Host "Restored all power plans: Balanced, High Performance, and Power Saver"
     $ResultText.text = "`r`n" +"`r`n" + "Restored all power plans: Balanced, High Performance, and Power Saver"
-})
-$NFS.Add_Click({
-    Enable-WindowsOptionalFeature -Online -FeatureName "ServicesForNFS-ClientOnly" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "ClientForNFS-Infrastructure" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "NFS-Administration" -All
-    nfsadmin client stop
-    Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default" -Name "AnonymousUID" -Type DWord -Value 0
-    Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default" -Name "AnonymousGID" -Type DWord -Value 0
-    nfsadmin client start
-    nfsadmin client localhost config fileaccess=755 SecFlavors=+sys -krb5 -krb5i
-    Write-Host "NFS is now setup for user based NFS mounts"
-    $ResultText.text = "`r`n" +"`r`n" + "NFS is now setup for user based NFS mounts"
 })
 
 $windowsupdatefix.Add_Click({
