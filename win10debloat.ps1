@@ -311,52 +311,6 @@ $nvcleanstall.Add_Click({
     $ResultText.text = "`r`n" + "Finished Installing NVCleanstall" + "`r`n" + "`r`n" + "Ready for Next Task"
 })
 
-
-# ------------------------------------------------------------------------------------------------
-# Communication Menu
-$Label11                         = New-Object System.Windows.Forms.Label
-$Label11.text                    = "Communication"
-$Label11.width                   = 211
-$Label11.height                  = 30
-$Label11.location                = New-Object System.Drawing.Point(57,445)
-$Label11.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
-
-# Discord
-
-$discord                         = New-Object system.Windows.Forms.Button
-$discord.text                    = "Discord"
-$discord.width                   = 211
-$discord.height                  = 30
-$discord.location                = New-Object System.Drawing.Point(3,468)
-$discord.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$discord.Add_Click({
-    Write-Host "Installing Discord"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing Discord... Please Wait" 
-    winget install -e Discord.Discord | Out-Host
-    if($?) { Write-Host "Installed Discord" }
-    $ResultText.text = "`r`n" + "Finished Installing Discord" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
-
-# Telegram
-
-$telegram                        = New-Object system.Windows.Forms.Button
-$telegram.text                   = "Telegram"
-$telegram.width                  = 211
-$telegram.height                 = 30
-$telegram.location               = New-Object System.Drawing.Point(3,502)
-$telegram.Font                   = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$telegram.Add_Click({
-    Write-Host "Installing Telegram"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing Telegram... Please Wait" 
-    winget install -e Telegram.TelegramDesktop | Out-Host
-    if($?) { Write-Host "Installed Telegram" }
-    $ResultText.text = "`r`n" + "Finished Installing Telegram" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
-
 # ------------------------------------------------------------------------------------------------
 # Web Browsers Menu
 $Label9                          = New-Object system.Windows.Forms.Label
@@ -541,6 +495,51 @@ $Panel2                          = New-Object system.Windows.Forms.Panel
 $Panel2.height                   = 938
 $Panel2.width                    = 211
 $Panel2.location                 = New-Object System.Drawing.Point(240,54)
+
+# ------------------------------------------------------------------------------------------------
+# Communication Menu
+$Label11                         = New-Object System.Windows.Forms.Label
+$Label11.text                    = "Communication"
+$Label11.width                   = 211
+$Label11.height                  = 30
+$Label11.location                = New-Object System.Drawing.Point(57,11)
+$Label11.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+
+# Discord
+
+$discord                         = New-Object system.Windows.Forms.Button
+$discord.text                    = "Discord"
+$discord.width                   = 211
+$discord.height                  = 30
+$discord.location                = New-Object System.Drawing.Point(3,32)
+$discord.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$discord.Add_Click({
+    Write-Host "Installing Discord"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing Discord... Please Wait" 
+    winget install -e Discord.Discord | Out-Host
+    if($?) { Write-Host "Installed Discord" }
+    $ResultText.text = "`r`n" + "Finished Installing Discord" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
+# Telegram
+
+$telegram                        = New-Object system.Windows.Forms.Button
+$telegram.text                   = "Telegram"
+$telegram.width                  = 211
+$telegram.height                 = 30
+$telegram.location               = New-Object System.Drawing.Point(3,66)
+$telegram.Font                   = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$telegram.Add_Click({
+    Write-Host "Installing Telegram"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing Telegram... Please Wait" 
+    winget install -e Telegram.TelegramDesktop | Out-Host
+    if($?) { Write-Host "Installed Telegram" }
+    $ResultText.text = "`r`n" + "Finished Installing Telegram" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
 
 
 
@@ -1036,7 +1035,7 @@ $Label10.Font                    = New-Object System.Drawing.Font('Microsoft San
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label1,$Panel3,$ResultText,$Label10))
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord,$cpuZ,$gpuZ,$hwinfotool,$CrystalDiskInfo,$spotify,$Label11,$telegram,$crystaldiskmark,$revouninstaller,$nvcleanstall))
-$Panel2.controls.AddRange(@())
+$Panel2.controls.AddRange(@($Label11,$discord.$telegram))
 $Panel3.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$reinstallbloat,$WarningLabel,$appearancefx,$ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower))
 $Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix))
 
