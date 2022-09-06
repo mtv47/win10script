@@ -133,13 +133,6 @@ $Label3.height                   = 25
 $Label3.location                 = New-Object System.Drawing.Point(349,11)
 $Label3.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',24)
 
-$actioncenter                    = New-Object system.Windows.Forms.Button
-$actioncenter.text               = "Disable Action Center"
-$actioncenter.width              = 205
-$actioncenter.height             = 30
-$actioncenter.location           = New-Object System.Drawing.Point(3,176)
-$actioncenter.Font               = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
 $darkmode                        = New-Object system.Windows.Forms.Button
 $darkmode.text                   = "Dark Mode"
 $darkmode.width                  = 205
@@ -238,13 +231,6 @@ $Panel3                          = New-Object system.Windows.Forms.Panel
 $Panel3.height                   = 381
 $Panel3.width                    = 220
 $Panel3.location                 = New-Object System.Drawing.Point(464,54)
-
-$EActionCenter                   = New-Object system.Windows.Forms.Button
-$EActionCenter.text              = "Enable Action Center"
-$EActionCenter.width             = 205
-$EActionCenter.height            = 30
-$EActionCenter.location          = New-Object System.Drawing.Point(3,210)
-$EActionCenter.Font              = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $HTrayIcons                      = New-Object system.Windows.Forms.Button
 $HTrayIcons.text                 = "Hide Tray Icons"
@@ -459,7 +445,7 @@ $restorepower.Font               = New-Object System.Drawing.Font('Microsoft San
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$PictureBox1,$Label1,$Panel3,$ResultText,$Label10,$Label11))
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$everythingsearch,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord))
-$Panel2.controls.AddRange(@($actioncenter,$darkmode,$performancefx,$lightmode,$EActionCenter,$HTrayIcons,$EClipboardHistory,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx,$STrayIcons))
+$Panel2.controls.AddRange(@($darkmode,$performancefx,$lightmode,$HTrayIcons,$EClipboardHistory,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx,$STrayIcons))
 $Panel4.controls.AddRange(@($defaultwindowsupdate,$securitywindowsupdate,$Label16,$Label17,$Label18,$Label19,$windowsupdatefix,$Label12))
 $Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower,$restorepower))
 
@@ -828,17 +814,6 @@ $securitywindowsupdate.Add_Click({
     $ResultText.text = "`r`n" +"`r`n" + "Set Windows Update to Sane Settings"
 })
 
-$actioncenter.Add_Click({
-    Write-Host "Disabling Action Center..."
-    If (!(Test-Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer")) {
-        New-Item -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer" | Out-Null
-    }
-    Set-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer" -Name "DisableNotificationCenter" -Type DWord -Value 1
-    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PushNotifications" -Name "ToastEnabled" -Type DWord -Value 0
-    Write-Host "Disabled Action Center"
-    $ResultText.text = "`r`n" +"`r`n" + "Disabled Action Center"
-})
-
 $performancefx.Add_Click({
     Write-Host "Adjusting visual effects for performance..."
     Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "DragFullWindows" -Type String -Value 0
@@ -884,14 +859,6 @@ $lightmode.Add_Click({
     $ResultText.text = "`r`n" +"`r`n" + "Enabled Light Mode"
 })
 
-$EActionCenter.Add_Click({
-    Write-Host "Enabling Action Center..."
-	Remove-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer" -Name "DisableNotificationCenter" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PushNotifications" -Name "ToastEnabled" -ErrorAction SilentlyContinue
-	Write-Host "Done - Reverted to Stock Settings"
-    $ResultText.text = "`r`n" +"`r`n" + "Enabled Action Center"
-})
-
 $HTrayIcons.Add_Click({
 
 	Write-Host "Hiding tray icons..."
@@ -915,17 +882,6 @@ $EClipboardHistory.Add_Click({
     Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "AllowClipboardHistory" -ErrorAction SilentlyContinue
 	Write-Host "Done - Reverted to Stock Settings"
     $ResultText.text = "`r`n" +"`r`n" + "Enabled Clipboard History"
-})
-
-$DisableNumLock.Add_Click({
-    Write-Host "Disable NumLock after startup..."
-    Set-ItemProperty -Path "HKU:\.DEFAULT\Control Panel\Keyboard" -Name "InitialKeyboardIndicators" -Type DWord -Value 0
-    Add-Type -AssemblyName System.Windows.Forms
-    If (([System.Windows.Forms.Control]::IsKeyLocked('NumLock'))) {
-        $wsh = New-Object -ComObject WScript.Shell
-        $wsh.SendKeys('{NUMLOCK}')
-    }
-    $ResultText.text = "`r`n" +"`r`n" + "NUMLOCK Disabled"
 })
 
 $ncpa.Add_Click({
