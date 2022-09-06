@@ -436,18 +436,11 @@ $oldpower.height                 = 30
 $oldpower.location               = New-Object System.Drawing.Point(4,227)
 $oldpower.Font                   = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
-$restorepower                    = New-Object system.Windows.Forms.Button
-$restorepower.text               = "Restore Power Options"
-$restorepower.width              = 211
-$restorepower.height             = 30
-$restorepower.location           = New-Object System.Drawing.Point(4,159)
-$restorepower.Font               = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$PictureBox1,$Label1,$Panel3,$ResultText,$Label10,$Label11))
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$everythingsearch,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord))
 $Panel2.controls.AddRange(@($darkmode,$performancefx,$lightmode,$HTrayIcons,$EClipboardHistory,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx,$STrayIcons))
 $Panel4.controls.AddRange(@($defaultwindowsupdate,$securitywindowsupdate,$Label16,$Label17,$Label18,$Label19,$windowsupdatefix,$Label12))
-$Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower,$restorepower))
+$Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower))
 
 $brave.Add_Click({
     Write-Host "Installing Brave Browser"
@@ -898,13 +891,6 @@ $oldsystempanel.Add_Click({
 })
 $oldpower.Add_Click({
     cmd /c powercfg.cpl
-})
-$restorepower.Add_Click({
-    powercfg -duplicatescheme a1841308-3541-4fab-bc81-f71556f20b4a
-    powercfg -duplicatescheme 381b4222-f694-41f0-9685-ff5bb260df2e
-    powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
-    Write-Host "Restored all power plans: Balanced, High Performance, and Power Saver"
-    $ResultText.text = "`r`n" +"`r`n" + "Restored all power plans: Balanced, High Performance, and Power Saver"
 })
 
 $windowsupdatefix.Add_Click({
