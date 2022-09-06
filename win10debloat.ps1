@@ -380,6 +380,24 @@ $vlc.Add_Click({
 })
 
 
+# Spotify
+
+$spotify                         = New-Object system.Windows.Forms.Button
+$spotify.text                    = "Spotify"
+$spotify.width                   = 212
+$spotify.height                  = 30
+$spotify.location                = New-Object System.Drawing.Point(4,769)
+$spotify.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$spotify.Add_Click({
+    Write-Host "Installing Spotify"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing Spotify... Please Wait" 
+    winget install -e Spotify.Spotify | Out-Host
+    if($?) { Write-Host "Installed Spotify" }
+    $ResultText.text = "`r`n" + "Finished Installing Spotify" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
 # ------------------------------------------------------------------------------------------------
 # Coding Menu
 
@@ -388,7 +406,7 @@ $Label7.text                     = "Coding Tools"
 $Label7.AutoSize                 = $true
 $Label7.width                    = 25
 $Label7.height                   = 10
-$Label7.location                 = New-Object System.Drawing.Point(60,800)
+$Label7.location                 = New-Object System.Drawing.Point(60,819)
 $Label7.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
 
 
@@ -592,12 +610,6 @@ $oldpower.width                  = 211
 $oldpower.height                 = 30
 $oldpower.location               = New-Object System.Drawing.Point(4,227)
 $oldpower.Font                   = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label1,$Panel3,$ResultText,$Label10))
-$Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord,$cpuZ,$gpuZ,$hwinfotool,$CrystalDiskInfo))
-$Panel2.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx))
-$Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix))
-$Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower))
 
 
 $Bloatware = @(
@@ -899,5 +911,11 @@ $windowsupdatefix.Add_Click({
     $ResultText.text = "`r`n" +"`r`n" + "Process complete. Please reboot your computer."
 
 })
+
+$Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label1,$Panel3,$ResultText,$Label10))
+$Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord,$cpuZ,$gpuZ,$hwinfotool,$CrystalDiskInfo,$spotify))
+$Panel2.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx))
+$Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix))
+$Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower))
 
 [void]$Form.ShowDialog()
