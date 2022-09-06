@@ -61,6 +61,14 @@ $Panel1.location                 = New-Object System.Drawing.Point(6,54)
 # ------------------------------------------------------------------------------------------------
 # Utilities Menu
 
+$Label1                          = New-Object system.Windows.Forms.Label
+$Label1.text                     = "Install"
+$Label1.AutoSize                 = $true
+$Label1.width                    = 230
+$Label1.height                   = 25
+$Label1.location                 = New-Object System.Drawing.Point(76,11)
+$Label1.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',24)
+
 $Label2                          = New-Object system.Windows.Forms.Label
 $Label2.text                     = "Utilities"
 $Label2.AutoSize                 = $true
@@ -528,20 +536,82 @@ $vscode.Add_Click({
 
 
 # ------------------------------------------------------------------------------------------------
-# Not finished Menu
-
+# Other Installs Menu
 $Panel2                          = New-Object system.Windows.Forms.Panel
 $Panel2.height                   = 938
 $Panel2.width                    = 211
 $Panel2.location                 = New-Object System.Drawing.Point(240,54)
+
+
+
+# ------------------------------------------------------------------------------------------------
+# System Menu
+$Panel3                          = New-Object system.Windows.Forms.Panel
+$Panel3.height                   = 381
+$Panel3.width                    = 220
+$Panel3.location                 = New-Object System.Drawing.Point(464,54)
 
 $Label3                          = New-Object system.Windows.Forms.Label
 $Label3.text                     = "System Tweaks"
 $Label3.AutoSize                 = $true
 $Label3.width                    = 230
 $Label3.height                   = 25
-$Label3.location                 = New-Object System.Drawing.Point(450,11)
+$Label3.location                 = New-Object System.Drawing.Point(460,11)
 $Label3.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',24)
+
+
+# PerformamnceFX
+
+$performancefx                   = New-Object system.Windows.Forms.Button
+$performancefx.text              = "Performance Visual FX"
+$performancefx.width             = 205
+$performancefx.height            = 30
+$performancefx.location          = New-Object System.Drawing.Point(3,419)
+$performancefx.Font              = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$performancefx.Add_Click({
+    Write-Host "Adjusting visual effects for performance..."
+    Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "DragFullWindows" -Type String -Value 0
+    Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Type String -Value 200
+    Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "UserPreferencesMask" -Type Binary -Value ([byte[]](144,18,3,128,16,0,0,0))
+    Set-ItemProperty -Path "HKCU:\Control Panel\Desktop\WindowMetrics" -Name "MinAnimate" -Type String -Value 0
+    Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Type DWord -Value 0
+    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewAlphaSelect" -Type DWord -Value 0
+    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewShadow" -Type DWord -Value 0
+    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarAnimations" -Type DWord -Value 0
+    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name "VisualFXSetting" -Type DWord -Value 3
+    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "EnableAeroPeek" -Type DWord -Value 0
+    Write-Host "Adjusted visual effects for performance"
+    $ResultText.text = "`r`n" +"`r`n" + "Adjusted VFX for performance"
+})
+
+
+# AppearanceFX
+
+$appearancefx                    = New-Object system.Windows.Forms.Button
+$appearancefx.text               = "Appearance Visual FX"
+$appearancefx.width              = 205
+$appearancefx.height             = 30
+$appearancefx.location           = New-Object System.Drawing.Point(4,385)
+$appearancefx.Font               = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$appearancefx.Add_Click({
+	Write-Output "Adjusting visual effects for appearance..."
+	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "DragFullWindows" -Type String -Value 1
+	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Type String -Value 400
+	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "UserPreferencesMask" -Type Binary -Value ([byte[]](158,30,7,128,18,0,0,0))
+	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop\WindowMetrics" -Name "MinAnimate" -Type String -Value 1
+	Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewAlphaSelect" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewShadow" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarAnimations" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name "VisualFXSetting" -Type DWord -Value 3
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "EnableAeroPeek" -Type DWord -Value 1
+    $ResultText.text = "`r`n" +"`r`n" + "Visual effects are set for appearance (Defaults)"
+})
+
+
+# DarkMode
 
 $darkmode                        = New-Object system.Windows.Forms.Button
 $darkmode.text                   = "Dark Mode"
@@ -550,12 +620,99 @@ $darkmode.height                 = 30
 $darkmode.location               = New-Object System.Drawing.Point(3,176)
 $darkmode.Font                   = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
-$performancefx                   = New-Object system.Windows.Forms.Button
-$performancefx.text              = "Performance Visual FX"
-$performancefx.width             = 205
-$performancefx.height            = 30
-$performancefx.location          = New-Object System.Drawing.Point(3,419)
-$performancefx.Font              = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+$darkmode.Add_Click({
+    Write-Host "Enabling Dark Mode"
+    Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value 0
+    Write-Host "Enabled Dark Mode"
+    $ResultText.text = "`r`n" +"`r`n" + "Enabled Dark Mode"
+})
+
+
+# LightMode
+
+$lightmode                       = New-Object system.Windows.Forms.Button
+$lightmode.text                  = "Light Mode"
+$lightmode.width                 = 205
+$lightmode.height                = 30
+$lightmode.location              = New-Object System.Drawing.Point(3,210)
+$lightmode.Font                  = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$lightmode.Add_Click({
+    Write-Host "Switching Back to Light Mode"
+    Remove-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme
+    Write-Host "Switched Back to Light Mode"
+    $ResultText.text = "`r`n" +"`r`n" + "Enabled Light Mode"
+})
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Old Pannels
+
+$ncpa                            = New-Object system.Windows.Forms.Button
+$ncpa.text                       = "Network Connections"
+$ncpa.width                      = 211
+$ncpa.height                     = 30
+$ncpa.location                   = New-Object System.Drawing.Point(4,159)
+$ncpa.Font                       = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$ncpa.Add_Click({
+    cmd /c ncpa.cpl
+})
+
+$oldcontrolpanel                 = New-Object system.Windows.Forms.Button
+$oldcontrolpanel.text            = "Win7 Control Panel"
+$oldcontrolpanel.width           = 211
+$oldcontrolpanel.height          = 30
+$oldcontrolpanel.location        = New-Object System.Drawing.Point(4,193)
+$oldcontrolpanel.Font            = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$oldcontrolpanel.Add_Click({
+    cmd /c control
+})
+
+
+$oldpower                        = New-Object system.Windows.Forms.Button
+$oldpower.text                   = "Win7 Power Panel"
+$oldpower.width                  = 211
+$oldpower.height                 = 30
+$oldpower.location               = New-Object System.Drawing.Point(4,227)
+$oldpower.Font                   = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$oldpower.Add_Click({
+    cmd /c powercfg.cpl
+})
+
+
+$oldsoundpanel                   = New-Object system.Windows.Forms.Button
+$oldsoundpanel.text              = "Win7 Sound Panel"
+$oldsoundpanel.width             = 211
+$oldsoundpanel.height            = 30
+$oldsoundpanel.location          = New-Object System.Drawing.Point(5,262)
+$oldsoundpanel.Font              = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$oldsoundpanel.Add_Click({
+    cmd /c mmsys.cpl
+})
+
+
+$oldsystempanel                  = New-Object system.Windows.Forms.Button
+$oldsystempanel.text             = "Win7 System Panel"
+$oldsystempanel.width            = 211
+$oldsystempanel.height           = 30
+$oldsystempanel.location         = New-Object System.Drawing.Point(5,298)
+$oldsystempanel.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$oldsystempanel.Add_Click({
+    cmd /c sysdm.cpl
+})
+
+
+# ------------------------------------------------------------------------------------------------------------------------------
+# Windows Update
+
+$Panel4                          = New-Object system.Windows.Forms.Panel
+$Panel4.height                   = 328
+$Panel4.width                    = 340
+$Panel4.location                 = New-Object System.Drawing.Point(699,54)
 
 $Label15                         = New-Object system.Windows.Forms.Label
 $Label15.text                    = "Windows Update"
@@ -565,10 +722,7 @@ $Label15.height                  = 10
 $Label15.location                = New-Object System.Drawing.Point(732,11)
 $Label15.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',24)
 
-$Panel4                          = New-Object system.Windows.Forms.Panel
-$Panel4.height                   = 328
-$Panel4.width                    = 340
-$Panel4.location                 = New-Object System.Drawing.Point(699,54)
+# Only security updates
 
 $securitywindowsupdate           = New-Object system.Windows.Forms.Button
 $securitywindowsupdate.text      = "Security Updates Only"
@@ -576,239 +730,6 @@ $securitywindowsupdate.width     = 300
 $securitywindowsupdate.height    = 30
 $securitywindowsupdate.location  = New-Object System.Drawing.Point(24,142)
 $securitywindowsupdate.Font      = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
-
-$lightmode                       = New-Object system.Windows.Forms.Button
-$lightmode.text                  = "Light Mode"
-$lightmode.width                 = 205
-$lightmode.height                = 30
-$lightmode.location              = New-Object System.Drawing.Point(3,210)
-$lightmode.Font                  = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$Label1                          = New-Object system.Windows.Forms.Label
-$Label1.text                     = "Install"
-$Label1.AutoSize                 = $true
-$Label1.width                    = 230
-$Label1.height                   = 25
-$Label1.location                 = New-Object System.Drawing.Point(76,11)
-$Label1.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',24)
-
-$Panel3                          = New-Object system.Windows.Forms.Panel
-$Panel3.height                   = 381
-$Panel3.width                    = 220
-$Panel3.location                 = New-Object System.Drawing.Point(464,54)
-
-$removebloat                     = New-Object system.Windows.Forms.Button
-$removebloat.text                = "Remove MS Store Apps"
-$removebloat.width               = 204
-$removebloat.height              = 34
-$removebloat.location            = New-Object System.Drawing.Point(3,898)
-$removebloat.Font                = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$reinstallbloat                  = New-Object system.Windows.Forms.Button
-$reinstallbloat.text             = "Reinstall MS Store Apps"
-$reinstallbloat.width            = 205
-$reinstallbloat.height           = 30
-$reinstallbloat.location         = New-Object System.Drawing.Point(3,813)
-$reinstallbloat.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$WarningLabel                    = New-Object system.Windows.Forms.Label
-$WarningLabel.text               = "Warning! This will break Microsoft Store"
-$WarningLabel.AutoSize           = $true
-$WarningLabel.width              = 25
-$WarningLabel.height             = 10
-$WarningLabel.location           = New-Object System.Drawing.Point(12,856)
-$WarningLabel.Font               = New-Object System.Drawing.Font('Microsoft Sans Serif',8)
-
-$Label5                          = New-Object system.Windows.Forms.Label
-$Label5.text                     = "Games, Apps, Sysprep, etc."
-$Label5.AutoSize                 = $true
-$Label5.width                    = 25
-$Label5.height                   = 10
-$Label5.location                 = New-Object System.Drawing.Point(44,877)
-$Label5.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',8)
-
-$appearancefx                    = New-Object system.Windows.Forms.Button
-$appearancefx.text               = "Appearance Visual FX"
-$appearancefx.width              = 205
-$appearancefx.height             = 30
-$appearancefx.location           = New-Object System.Drawing.Point(4,385)
-$appearancefx.Font               = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$windowsupdatefix                = New-Object system.Windows.Forms.Button
-$windowsupdatefix.text           = "Windows Update Reset"
-$windowsupdatefix.width          = 300
-$windowsupdatefix.height         = 30
-$windowsupdatefix.location       = New-Object System.Drawing.Point(25,216)
-$windowsupdatefix.Font           = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
-
-$ResultText                      = New-Object system.Windows.Forms.TextBox
-$ResultText.multiline            = $true
-$ResultText.width                = 382
-$ResultText.height               = 130
-$ResultText.location             = New-Object System.Drawing.Point(576,491)
-$ResultText.Font                 = New-Object System.Drawing.Font('Microsoft Sans Serif',10)
-
-$Label10                         = New-Object system.Windows.Forms.Label
-$Label10.text                    = "Current Status:"
-$Label10.AutoSize                = $true
-$Label10.width                   = 25
-$Label10.height                  = 10
-$Label10.location                = New-Object System.Drawing.Point(658,448)
-$Label10.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',24)
-
-$ncpa                            = New-Object system.Windows.Forms.Button
-$ncpa.text                       = "Network Connections"
-$ncpa.width                      = 211
-$ncpa.height                     = 30
-$ncpa.location                   = New-Object System.Drawing.Point(4,126)
-$ncpa.Font                       = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$oldcontrolpanel                 = New-Object system.Windows.Forms.Button
-$oldcontrolpanel.text            = "Win7 Control Panel"
-$oldcontrolpanel.width           = 211
-$oldcontrolpanel.height          = 30
-$oldcontrolpanel.location        = New-Object System.Drawing.Point(4,193)
-$oldcontrolpanel.Font            = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$oldsoundpanel                   = New-Object system.Windows.Forms.Button
-$oldsoundpanel.text              = "Win7 Sound Panel"
-$oldsoundpanel.width             = 211
-$oldsoundpanel.height            = 30
-$oldsoundpanel.location          = New-Object System.Drawing.Point(5,262)
-$oldsoundpanel.Font              = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$oldsystempanel                  = New-Object system.Windows.Forms.Button
-$oldsystempanel.text             = "Win7 System Panel"
-$oldsystempanel.width            = 211
-$oldsystempanel.height           = 30
-$oldsystempanel.location         = New-Object System.Drawing.Point(5,298)
-$oldsystempanel.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$oldpower                        = New-Object system.Windows.Forms.Button
-$oldpower.text                   = "Win7 Power Panel"
-$oldpower.width                  = 211
-$oldpower.height                 = 30
-$oldpower.location               = New-Object System.Drawing.Point(4,227)
-$oldpower.Font                   = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-
-$Bloatware = @(
-    #Unnecessary Windows 10 AppX Apps
-    "Microsoft.3DBuilder"
-    "Microsoft.Microsoft3DViewer"
-    "Microsoft.AppConnector"
-    "Microsoft.BingFinance"
-    "Microsoft.BingNews"
-    "Microsoft.BingSports"
-    "Microsoft.BingTranslator"
-    "Microsoft.BingWeather"
-    "Microsoft.BingFoodAndDrink"
-    "Microsoft.BingHealthAndFitness"
-    "Microsoft.BingTravel"
-    "Microsoft.MinecraftUWP"
-    "Microsoft.GamingServices"
-    # "Microsoft.WindowsReadingList"
-    "Microsoft.GetHelp"
-    "Microsoft.Getstarted"
-    "Microsoft.Messaging"
-    "Microsoft.Microsoft3DViewer"
-    "Microsoft.MicrosoftSolitaireCollection"
-    "Microsoft.NetworkSpeedTest"
-    "Microsoft.News"
-    "Microsoft.Office.Lens"
-    "Microsoft.Office.Sway"
-    "Microsoft.Office.OneNote"
-    "Microsoft.OneConnect"
-    "Microsoft.People"
-    "Microsoft.Print3D"
-    "Microsoft.SkypeApp"
-    "Microsoft.Wallet"
-    "Microsoft.Whiteboard"
-    "Microsoft.WindowsAlarms"
-    "microsoft.windowscommunicationsapps"
-    "Microsoft.WindowsFeedbackHub"
-    "Microsoft.WindowsMaps"
-    "Microsoft.WindowsPhone"
-    "Microsoft.WindowsSoundRecorder"
-    "Microsoft.XboxApp"
-    "Microsoft.ConnectivityStore"
-    "Microsoft.CommsPhone"
-    "Microsoft.ScreenSketch"
-    "Microsoft.Xbox.TCUI"
-    "Microsoft.XboxGameOverlay"
-    "Microsoft.XboxGameCallableUI"
-    "Microsoft.XboxSpeechToTextOverlay"
-    "Microsoft.MixedReality.Portal"
-    "Microsoft.XboxIdentityProvider"
-    "Microsoft.ZuneMusic"
-    "Microsoft.ZuneVideo"
-    "Microsoft.YourPhone"
-    "Microsoft.Getstarted"
-    "Microsoft.MicrosoftOfficeHub"
-
-    #Sponsored Windows 10 AppX Apps
-    #Add sponsored/featured apps to remove in the "*AppName*" format
-    "*EclipseManager*"
-    "*ActiproSoftwareLLC*"
-    "*AdobeSystemsIncorporated.AdobePhotoshopExpress*"
-    "*Duolingo-LearnLanguagesforFree*"
-    "*PandoraMediaInc*"
-    "*CandyCrush*"
-    "*BubbleWitch3Saga*"
-    "*Wunderlist*"
-    "*Flipboard*"
-    "*Twitter*"
-    "*Facebook*"
-    "*Royal Revolt*"
-    "*Sway*"
-    "*Speed Test*"
-    "*Dolby*"
-    "*Viber*"
-    "*ACGMediaPlayer*"
-    "*Netflix*"
-    "*OneCalendar*"
-    "*LinkedInforWindows*"
-    "*HiddenCityMysteryofShadows*"
-    "*Hulu*"
-    "*HiddenCity*"
-    "*AdobePhotoshopExpress*"
-    "*HotspotShieldFreeVPN*"
-
-    #Optional: Typically not removed but you can if you need to for some reason
-    "*Microsoft.Advertising.Xaml*"
-    #"*Microsoft.MSPaint*"
-    #"*Microsoft.MicrosoftStickyNotes*"
-    #"*Microsoft.Windows.Photos*"
-    #"*Microsoft.WindowsCalculator*"
-    #"*Microsoft.WindowsStore*"
-)
-
-$removebloat.Add_Click({
-    Write-Host "Removing Bloatware"
-
-    foreach ($Bloat in $Bloatware) {
-        Get-AppxPackage -Name $Bloat| Remove-AppxPackage
-        Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like $Bloat | Remove-AppxProvisionedPackage -Online
-        Write-Host "Trying to remove $Bloat."
-        $ResultText.text = "`r`n" +"`r`n" + "Trying to remove $Bloat."
-    }
-
-    Write-Host "Finished Removing Bloatware Apps"
-    $ResultText.text = "`r`n" +"`r`n" + "Finished Removing Bloatware Apps"
-})
-
-$reinstallbloat.Add_Click({
-    Write-Host "Reinstalling Bloatware"
-
-    foreach ($app in $Bloatware) {
-        Write-Output "Trying to add $app"
-        $ResultText.text = "`r`n" +"`r`n" + "Trying to add $app"
-        Add-AppxPackage -DisableDevelopmentMode -Register "$($(Get-AppxPackage -AllUsers $app).InstallLocation)\AppXManifest.xml"
-    }
-
-    Write-Host "Finished Reinstalling Bloatware Apps"
-    $ResultText.text = "`r`n" +"`r`n" + "Finished Reinstalling Bloatware Apps"
-})
 
 $securitywindowsupdate.Add_Click({
     Write-Host "Disabling driver offering through Windows Update..."
@@ -836,66 +757,14 @@ $securitywindowsupdate.Add_Click({
     $ResultText.text = "`r`n" +"`r`n" + "Set Windows Update to Sane Settings"
 })
 
-$performancefx.Add_Click({
-    Write-Host "Adjusting visual effects for performance..."
-    Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "DragFullWindows" -Type String -Value 0
-    Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Type String -Value 200
-    Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "UserPreferencesMask" -Type Binary -Value ([byte[]](144,18,3,128,16,0,0,0))
-    Set-ItemProperty -Path "HKCU:\Control Panel\Desktop\WindowMetrics" -Name "MinAnimate" -Type String -Value 0
-    Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Type DWord -Value 0
-    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewAlphaSelect" -Type DWord -Value 0
-    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewShadow" -Type DWord -Value 0
-    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarAnimations" -Type DWord -Value 0
-    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name "VisualFXSetting" -Type DWord -Value 3
-    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "EnableAeroPeek" -Type DWord -Value 0
-    Write-Host "Adjusted visual effects for performance"
-    $ResultText.text = "`r`n" +"`r`n" + "Adjusted VFX for performance"
-})
+# All updates
 
-$appearancefx.Add_Click({
-	Write-Output "Adjusting visual effects for appearance..."
-	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "DragFullWindows" -Type String -Value 1
-	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Type String -Value 400
-	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "UserPreferencesMask" -Type Binary -Value ([byte[]](158,30,7,128,18,0,0,0))
-	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop\WindowMetrics" -Name "MinAnimate" -Type String -Value 1
-	Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewAlphaSelect" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewShadow" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarAnimations" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name "VisualFXSetting" -Type DWord -Value 3
-	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "EnableAeroPeek" -Type DWord -Value 1
-    $ResultText.text = "`r`n" +"`r`n" + "Visual effects are set for appearance (Defaults)"
-})
-
-$darkmode.Add_Click({
-    Write-Host "Enabling Dark Mode"
-    Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value 0
-    Write-Host "Enabled Dark Mode"
-    $ResultText.text = "`r`n" +"`r`n" + "Enabled Dark Mode"
-})
-
-$lightmode.Add_Click({
-    Write-Host "Switching Back to Light Mode"
-    Remove-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme
-    Write-Host "Switched Back to Light Mode"
-    $ResultText.text = "`r`n" +"`r`n" + "Enabled Light Mode"
-})
-
-$ncpa.Add_Click({
-    cmd /c ncpa.cpl
-})
-$oldsoundpanel.Add_Click({
-    cmd /c mmsys.cpl
-})
-$oldcontrolpanel.Add_Click({
-    cmd /c control
-})
-$oldsystempanel.Add_Click({
-    cmd /c sysdm.cpl
-})
-$oldpower.Add_Click({
-    cmd /c powercfg.cpl
-})
+$windowsupdatefix                = New-Object system.Windows.Forms.Button
+$windowsupdatefix.text           = "Windows Update Reset"
+$windowsupdatefix.width          = 300
+$windowsupdatefix.height         = 30
+$windowsupdatefix.location       = New-Object System.Drawing.Point(25,216)
+$windowsupdatefix.Font           = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
 
 $windowsupdatefix.Add_Click({
     Write-Host "1. Stopping Windows Update Services..." 
@@ -992,9 +861,181 @@ $windowsupdatefix.Add_Click({
 
 })
 
+
+# ------------------------------------------------------------------------------------------------------------------------------
+# Windows Bloatware
+$WarningLabel                    = New-Object system.Windows.Forms.Label
+$WarningLabel.text               = "Warning! This will break Microsoft Store"
+$WarningLabel.AutoSize           = $true
+$WarningLabel.width              = 25
+$WarningLabel.height             = 10
+$WarningLabel.location           = New-Object System.Drawing.Point(12,856)
+$WarningLabel.Font               = New-Object System.Drawing.Font('Microsoft Sans Serif',8)
+
+$Bloatware = @(
+    #Unnecessary Windows 10 AppX Apps
+    "Microsoft.3DBuilder"
+    "Microsoft.Microsoft3DViewer"
+    "Microsoft.AppConnector"
+    "Microsoft.BingFinance"
+    "Microsoft.BingNews"
+    "Microsoft.BingSports"
+    "Microsoft.BingTranslator"
+    "Microsoft.BingWeather"
+    "Microsoft.BingFoodAndDrink"
+    "Microsoft.BingHealthAndFitness"
+    "Microsoft.BingTravel"
+    "Microsoft.MinecraftUWP"
+    "Microsoft.GamingServices"
+    # "Microsoft.WindowsReadingList"
+    "Microsoft.GetHelp"
+    "Microsoft.Getstarted"
+    "Microsoft.Messaging"
+    "Microsoft.Microsoft3DViewer"
+    "Microsoft.MicrosoftSolitaireCollection"
+    "Microsoft.NetworkSpeedTest"
+    "Microsoft.News"
+    "Microsoft.Office.Lens"
+    "Microsoft.Office.Sway"
+    "Microsoft.Office.OneNote"
+    "Microsoft.OneConnect"
+    "Microsoft.People"
+    "Microsoft.Print3D"
+    "Microsoft.SkypeApp"
+    "Microsoft.Wallet"
+    "Microsoft.Whiteboard"
+    "Microsoft.WindowsAlarms"
+    "microsoft.windowscommunicationsapps"
+    "Microsoft.WindowsFeedbackHub"
+    "Microsoft.WindowsMaps"
+    "Microsoft.WindowsPhone"
+    "Microsoft.WindowsSoundRecorder"
+    "Microsoft.XboxApp"
+    "Microsoft.ConnectivityStore"
+    "Microsoft.CommsPhone"
+    "Microsoft.ScreenSketch"
+    "Microsoft.Xbox.TCUI"
+    "Microsoft.XboxGameOverlay"
+    "Microsoft.XboxGameCallableUI"
+    "Microsoft.XboxSpeechToTextOverlay"
+    "Microsoft.MixedReality.Portal"
+    "Microsoft.XboxIdentityProvider"
+    "Microsoft.ZuneMusic"
+    "Microsoft.ZuneVideo"
+    "Microsoft.YourPhone"
+    "Microsoft.Getstarted"
+    "Microsoft.MicrosoftOfficeHub"
+
+    #Sponsored Windows 10 AppX Apps
+    #Add sponsored/featured apps to remove in the "*AppName*" format
+    "*EclipseManager*"
+    "*ActiproSoftwareLLC*"
+    "*AdobeSystemsIncorporated.AdobePhotoshopExpress*"
+    "*Duolingo-LearnLanguagesforFree*"
+    "*PandoraMediaInc*"
+    "*CandyCrush*"
+    "*BubbleWitch3Saga*"
+    "*Wunderlist*"
+    "*Flipboard*"
+    "*Twitter*"
+    "*Facebook*"
+    "*Royal Revolt*"
+    "*Sway*"
+    "*Speed Test*"
+    "*Dolby*"
+    "*Viber*"
+    "*ACGMediaPlayer*"
+    "*Netflix*"
+    "*OneCalendar*"
+    "*LinkedInforWindows*"
+    "*HiddenCityMysteryofShadows*"
+    "*Hulu*"
+    "*HiddenCity*"
+    "*AdobePhotoshopExpress*"
+    "*HotspotShieldFreeVPN*"
+
+    #Optional: Typically not removed but you can if you need to for some reason
+    "*Microsoft.Advertising.Xaml*"
+    #"*Microsoft.MSPaint*"
+    #"*Microsoft.MicrosoftStickyNotes*"
+    #"*Microsoft.Windows.Photos*"
+    #"*Microsoft.WindowsCalculator*"
+    #"*Microsoft.WindowsStore*"
+)
+
+
+# Remove bloated apps
+
+$removebloat                     = New-Object system.Windows.Forms.Button
+$removebloat.text                = "Remove MS Store Apps"
+$removebloat.width               = 204
+$removebloat.height              = 34
+$removebloat.location            = New-Object System.Drawing.Point(3,898)
+$removebloat.Font                = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$removebloat.Add_Click({
+    Write-Host "Removing Bloatware"
+
+    foreach ($Bloat in $Bloatware) {
+        Get-AppxPackage -Name $Bloat| Remove-AppxPackage
+        Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like $Bloat | Remove-AppxProvisionedPackage -Online
+        Write-Host "Trying to remove $Bloat."
+        $ResultText.text = "`r`n" +"`r`n" + "Trying to remove $Bloat."
+    }
+
+    Write-Host "Finished Removing Bloatware Apps"
+    $ResultText.text = "`r`n" +"`r`n" + "Finished Removing Bloatware Apps"
+})
+
+
+# Reinstate bloatware
+
+$reinstallbloat                  = New-Object system.Windows.Forms.Button
+$reinstallbloat.text             = "Reinstall MS Store Apps"
+$reinstallbloat.width            = 205
+$reinstallbloat.height           = 30
+$reinstallbloat.location         = New-Object System.Drawing.Point(3,813)
+$reinstallbloat.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$reinstallbloat.Add_Click({
+    Write-Host "Reinstalling Bloatware"
+
+    foreach ($app in $Bloatware) {
+        Write-Output "Trying to add $app"
+        $ResultText.text = "`r`n" +"`r`n" + "Trying to add $app"
+        Add-AppxPackage -DisableDevelopmentMode -Register "$($(Get-AppxPackage -AllUsers $app).InstallLocation)\AppXManifest.xml"
+    }
+
+    Write-Host "Finished Reinstalling Bloatware Apps"
+    $ResultText.text = "`r`n" +"`r`n" + "Finished Reinstalling Bloatware Apps"
+})
+
+
+# ------------------------------------------------------------------------------------------------------------------------------
+# Outputs
+
+$ResultText                      = New-Object system.Windows.Forms.TextBox
+$ResultText.multiline            = $true
+$ResultText.width                = 382
+$ResultText.height               = 130
+$ResultText.location             = New-Object System.Drawing.Point(576,491)
+$ResultText.Font                 = New-Object System.Drawing.Font('Microsoft Sans Serif',10)
+
+$Label10                         = New-Object system.Windows.Forms.Label
+$Label10.text                    = "Current Status:"
+$Label10.AutoSize                = $true
+$Label10.width                   = 25
+$Label10.height                  = 10
+$Label10.location                = New-Object System.Drawing.Point(658,448)
+$Label10.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',24)
+
+
+# ------------------------------------------------------------------------------------------------------------------------------
+# Add the controls to the form
+
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label1,$Panel3,$ResultText,$Label10))
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord,$cpuZ,$gpuZ,$hwinfotool,$CrystalDiskInfo,$spotify,$Label11,$telegram,$crystaldiskmark,$revouninstaller,$nvcleanstall))
-$Panel2.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx))
+$Panel2.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$reinstallbloat,$WarningLabel,$appearancefx))
 $Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix))
 $Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower))
 
