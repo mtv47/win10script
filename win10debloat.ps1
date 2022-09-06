@@ -137,7 +137,7 @@ $darkmode                        = New-Object system.Windows.Forms.Button
 $darkmode.text                   = "Dark Mode"
 $darkmode.width                  = 205
 $darkmode.height                 = 30
-$darkmode.location               = New-Object System.Drawing.Point(4,315)
+$darkmode.location               = New-Object System.Drawing.Point(3,176)
 $darkmode.Font                   = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $performancefx                   = New-Object system.Windows.Forms.Button
@@ -171,7 +171,7 @@ $lightmode                       = New-Object system.Windows.Forms.Button
 $lightmode.text                  = "Light Mode"
 $lightmode.width                 = 205
 $lightmode.height                = 30
-$lightmode.location              = New-Object System.Drawing.Point(3,350)
+$lightmode.location              = New-Object System.Drawing.Point(3,210)
 $lightmode.Font                  = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $Label1                          = New-Object system.Windows.Forms.Label
