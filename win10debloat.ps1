@@ -614,6 +614,23 @@ $epic.Add_Click({
     $ResultText.text = "`r`n" + "Finished Installing Epic Games" + "`r`n" + "`r`n" + "Ready for Next Task"
 })
 
+# Unigine Superposition
+
+$superposition                   = New-Object system.Windows.Forms.Button
+$superposition.text              = "Unigine Superposition"
+$superposition.width             = 211
+$superposition.height            = 30
+$superposition.location          = New-Object System.Drawing.Point(3,240)
+$superposition.Font              = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$superposition.Add_Click({
+    Write-Host "Installing Unigine Superposition"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing Unigine Superposition... Please Wait" 
+    winget install -e Unigine.Superposition | Out-Host
+    if($?) { Write-Host "Installed Unigine Superposition" }
+    $ResultText.text = "`r`n" + "Finished Installing Unigine Superposition" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
 
 # ------------------------------------------------------------------------------------------------
 # System Menu
@@ -1107,7 +1124,7 @@ $Label10.Font                    = New-Object System.Drawing.Font('Microsoft San
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label1,$Panel3,$ResultText,$Label10))
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$cpuZ,$gpuZ,$hwinfotool,$CrystalDiskInfo,$spotify,$crystaldiskmark,$revouninstaller,$nvcleanstall,$malwarebytes))
-$Panel2.controls.AddRange(@($Label11,$discord,$telegram,$Label12,$steam,$origin,$epic))
+$Panel2.controls.AddRange(@($Label11,$discord,$telegram,$Label12,$steam,$origin,$epic,$superposition))
 $Panel3.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$reinstallbloat,$WarningLabel,$appearancefx,$ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower))
 $Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix))
 
