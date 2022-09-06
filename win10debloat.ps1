@@ -500,8 +500,8 @@ $Panel2.location                 = New-Object System.Drawing.Point(240,54)
 # Communication Menu
 $Label11                         = New-Object System.Windows.Forms.Label
 $Label11.text                    = "Communication"
-$Label11.width                   = 211
-$Label11.height                  = 30
+$Label11.width                   = 25
+$Label11.height                  = 10
 $Label11.location                = New-Object System.Drawing.Point(57,11)
 $Label11.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
 
