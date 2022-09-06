@@ -232,13 +232,6 @@ $Panel3.height                   = 381
 $Panel3.width                    = 220
 $Panel3.location                 = New-Object System.Drawing.Point(464,54)
 
-$HTrayIcons                      = New-Object system.Windows.Forms.Button
-$HTrayIcons.text                 = "Hide Tray Icons"
-$HTrayIcons.width                = 205
-$HTrayIcons.height               = 30
-$HTrayIcons.location             = New-Object System.Drawing.Point(3,278)
-$HTrayIcons.Font                 = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
 $everythingsearch                = New-Object system.Windows.Forms.Button
 $everythingsearch.text           = "Everything Search"
 $everythingsearch.width          = 211
@@ -349,13 +342,6 @@ $appearancefx.height             = 30
 $appearancefx.location           = New-Object System.Drawing.Point(4,385)
 $appearancefx.Font               = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
-$STrayIcons                      = New-Object system.Windows.Forms.Button
-$STrayIcons.text                 = "Show Tray Icons"
-$STrayIcons.width                = 205
-$STrayIcons.height               = 30
-$STrayIcons.location             = New-Object System.Drawing.Point(2,244)
-$STrayIcons.Font                 = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
 $windowsupdatefix                = New-Object system.Windows.Forms.Button
 $windowsupdatefix.text           = "Windows Update Reset"
 $windowsupdatefix.width          = 300
@@ -431,7 +417,7 @@ $oldpower.Font                   = New-Object System.Drawing.Font('Microsoft San
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$PictureBox1,$Label1,$Panel3,$ResultText,$Label10,$Label11))
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$everythingsearch,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord))
-$Panel2.controls.AddRange(@($darkmode,$performancefx,$lightmode,$HTrayIcons,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx,$STrayIcons))
+$Panel2.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx))
 $Panel4.controls.AddRange(@($defaultwindowsupdate,$securitywindowsupdate,$Label16,$Label17,$Label18,$Label19,$windowsupdatefix,$Label12))
 $Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower))
 
@@ -843,23 +829,6 @@ $lightmode.Add_Click({
     Remove-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme
     Write-Host "Switched Back to Light Mode"
     $ResultText.text = "`r`n" +"`r`n" + "Enabled Light Mode"
-})
-
-$HTrayIcons.Add_Click({
-
-	Write-Host "Hiding tray icons..."
-	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name "EnableAutoTray" -Type DWord -Value 1
-	Write-Host "Done - Hid Tray Icons"
-    $ResultText.text = "`r`n" +"`r`n" + "Tray icons are now factory defaults"
-})
-
-
-$STrayIcons.Add_Click({
-
-	Write-Host "Showing tray icons..."
-	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name "EnableAutoTray" -Type DWord -Value 0
-	Write-Host "Done - Now showing all tray icons"
-    $ResultText.text = "`r`n" +"`r`n" + "Tray Icons now set to show all"
 })
 
 $ncpa.Add_Click({
