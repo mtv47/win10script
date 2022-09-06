@@ -327,18 +327,18 @@ $brave.Add_Click({
 # Firefox
 
 $firefox                         = New-Object system.Windows.Forms.Button
-$firefox.text                    = "Firefox"
+$firefox.text                    = "LibreWolf"
 $firefox.width                   = 212
 $firefox.height                  = 30
 $firefox.location                = New-Object System.Drawing.Point(4,601)
 $firefox.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $firefox.Add_Click({
-    Write-Host "Installing Firefox"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing Firefox... Please Wait" 
-    winget install -e Mozilla.Firefox | Out-Host
-    if($?) { Write-Host "Installed Firefox" }
-    $ResultText.text = "`r`n" + "Finished Installing Firefox" + "`r`n" + "`r`n" + "Ready for Next Task"
+    Write-Host "Installing LibreWolf"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing LibreWolf... Please Wait" 
+    winget install -e LibreWolf.LibreWolf | Out-Host
+    if($?) { Write-Host "Installed LibreWolf" }
+    $ResultText.text = "`r`n" + "Finished Installing LibreWolf" + "`r`n" + "`r`n" + "Ready for Next Task"
 })
 
 
