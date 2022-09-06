@@ -278,7 +278,7 @@ $gimp                            = New-Object system.Windows.Forms.Button
 $gimp.text                       = "GIMP (Image Editor)"
 $gimp.width                      = 212
 $gimp.height                     = 30
-$gimp.location                   = New-Object System.Drawing.Point(4,629)
+$gimp.location                   = New-Object System.Drawing.Point(3,561)
 $gimp.Font                       = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $gimp.Add_Click({
@@ -296,7 +296,7 @@ $vlc                             = New-Object system.Windows.Forms.Button
 $vlc.text                        = "VLC"
 $vlc.width                       = 212
 $vlc.height                      = 30
-$vlc.location                    = New-Object System.Drawing.Point(3,663)
+$vlc.location                    = New-Object System.Drawing.Point(4,595)
 $vlc.Font                        = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $vlc.Add_Click({
