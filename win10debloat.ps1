@@ -406,13 +406,6 @@ $Label10.height                  = 10
 $Label10.location                = New-Object System.Drawing.Point(658,448)
 $Label10.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',24)
 
-$EHibernation                    = New-Object system.Windows.Forms.Button
-$EHibernation.text               = "Enable Hibernation"
-$EHibernation.width              = 205
-$EHibernation.height             = 30
-$EHibernation.location           = New-Object System.Drawing.Point(3,721)
-$EHibernation.Font               = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
 $Label11                         = New-Object system.Windows.Forms.Label
 $Label11.text                    = "Videos to Fix Windows"
 $Label11.AutoSize                = $true
@@ -480,7 +473,7 @@ $restorepower.Font               = New-Object System.Drawing.Font('Microsoft San
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$PictureBox1,$Label1,$Panel3,$ResultText,$Label10,$Label11))
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$everythingsearch,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord))
-$Panel2.controls.AddRange(@($actioncenter,$darkmode,$performancefx,$lightmode,$EActionCenter,$HTrayIcons,$EClipboardHistory,$ELocation,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx,$STrayIcons,$EHibernation))
+$Panel2.controls.AddRange(@($actioncenter,$darkmode,$performancefx,$lightmode,$EActionCenter,$HTrayIcons,$EClipboardHistory,$ELocation,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx,$STrayIcons))
 $Panel4.controls.AddRange(@($defaultwindowsupdate,$securitywindowsupdate,$Label16,$Label17,$Label18,$Label19,$windowsupdatefix,$Label12))
 $Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$NFS,$oldpower,$restorepower))
 
@@ -956,14 +949,6 @@ $ELocation.Add_Click({
 	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" -Name "LetAppsAccessLocation_ForceDenyTheseApps" -ErrorAction SilentlyContinue
 	Write-Host "Done - Reverted to Stock Settings"
     $ResultText.text = "`r`n" +"`r`n" + "Location Tracking now on... Reboot to check."
-})
-
-$EHibernation.Add_Click({
-    Write-Host "Enabling Hibernation"
-    Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Session Manager\Power" -Name "HibernteEnabled" -Type Dword -Value 1
-    Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" -Name "ShowHibernateOption" -Type Dword -Value 1
-    Write-Host "Done - Reverted to Stock Settings"
-    $ResultText.text = "`r`n" +"`r`n" + "Enabled Hibernation"
 })
 
 $DisableNumLock.Add_Click({
