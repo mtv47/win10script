@@ -626,7 +626,7 @@ $superposition.Font              = New-Object System.Drawing.Font('Microsoft San
 $superposition.Add_Click({
     Write-Host "Installing Unigine Superposition"
     $ResultText.text = "`r`n" +"`r`n" + "Installing Unigine Superposition... Please Wait" 
-    winget install -e Unigine.Superposition | Out-Host
+    winget install -e Unigine.SuperpositionBenchmark | Out-Host
     if($?) { Write-Host "Installed Unigine Superposition" }
     $ResultText.text = "`r`n" + "Finished Installing Unigine Superposition" + "`r`n" + "`r`n" + "Ready for Next Task"
 })
