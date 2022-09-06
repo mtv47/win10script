@@ -178,6 +178,42 @@ $advancedipscanner.Add_Click({
     $ResultText.text = "`r`n" + "Finished Installing Advanced IP Scanner" + "`r`n" + "`r`n" + "Ready for Next Task"
 })
 
+
+# CPU-Z
+
+$cpuZ                            = New-Object system.Windows.Forms.Button
+$cpuZ.text                       = "CPU-Z"
+$cpuZ.width                      = 211
+$cpuZ.height                     = 30
+$cpuZ.location                   = New-Object System.Drawing.Point(3,237)
+$cpuZ.Font                       = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$cpuZ.Add_Click({
+    Write-Host "Installing CPU-Z"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing CPU-Z... Please Wait" 
+    winget install -e CPUID.CPU-Z | Out-Host
+    Write-Host "Installed CPU-Z"
+    $ResultText.text = "`r`n" + "Finished Installing CPU-Z" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+# GPU-Z
+
+$gpuZ                            = New-Object system.Windows.Forms.Button
+$gpuZ.text                       = "GPU-Z"
+$gpuZ.width                      = 211
+$gpuZ.height                     = 30
+$gpuZ.location                   = New-Object System.Drawing.Point(3,271)
+$gpuZ.Font                       = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$gpuZ.Add_Click({
+    Write-Host "Installing GPU-Z"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing GPU-Z... Please Wait" 
+    winget install -e TechPowerUp.GPU-Z | Out-Host
+    Write-Host "Installed GPU-Z"
+    $ResultText.text = "`r`n" + "Finished Installing GPU-Z" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
 # Discord
 
 $discord                         = New-Object system.Windows.Forms.Button
