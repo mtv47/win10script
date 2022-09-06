@@ -30,7 +30,7 @@ else{
 
 $Form                            = New-Object system.Windows.Forms.Form
 $Form.ClientSize                 = New-Object System.Drawing.Point(1050,1000)
-$Form.text                       = "Windows Toolbox By Chris Titus"
+$Form.text                       = "Windows Toolbox By mtv47"
 $Form.StartPosition              = "CenterScreen"
 $Form.TopMost                    = $false
 $Form.BackColor                  = [System.Drawing.ColorTranslator]::FromHtml("#e9e9e9")
@@ -312,14 +312,6 @@ $Label10.height                  = 10
 $Label10.location                = New-Object System.Drawing.Point(658,448)
 $Label10.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',24)
 
-$Label11                         = New-Object system.Windows.Forms.Label
-$Label11.text                    = "Videos to Fix Windows"
-$Label11.AutoSize                = $true
-$Label11.width                   = 25
-$Label11.height                  = 10
-$Label11.location                = New-Object System.Drawing.Point(687,659)
-$Label11.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
 $ncpa                            = New-Object system.Windows.Forms.Button
 $ncpa.text                       = "Network Connections"
 $ncpa.width                      = 211
@@ -363,7 +355,7 @@ $oldpower.height                 = 30
 $oldpower.location               = New-Object System.Drawing.Point(4,227)
 $oldpower.Font                   = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
-$Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label1,$Panel3,$ResultText,$Label10,$Label11))
+$Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label1,$Panel3,$ResultText,$Label10))
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord))
 $Panel2.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx))
 $Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix,$Label12))
