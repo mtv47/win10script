@@ -502,7 +502,7 @@ $Label11                         = New-Object System.Windows.Forms.Label
 $Label11.text                    = "Communication"
 $Label11.width                   = 211
 $Label11.height                  = 30
-$Label11.location                = New-Object System.Drawing.Point(57,4)
+$Label11.location                = New-Object System.Drawing.Point(57,6)
 $Label11.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
 
 # Discord
