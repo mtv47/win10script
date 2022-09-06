@@ -464,13 +464,6 @@ $Label12.height                  = 10
 $Label12.location                = New-Object System.Drawing.Point(98,275)
 $Label12.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
 
-$Virtualization                  = New-Object system.Windows.Forms.Button
-$Virtualization.text             = "Enable HyperV + WSL"
-$Virtualization.width            = 211
-$Virtualization.height           = 30
-$Virtualization.location         = New-Object System.Drawing.Point(4,23)
-$Virtualization.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
 $oldpower                        = New-Object system.Windows.Forms.Button
 $oldpower.text                   = "Win7 Power Panel"
 $oldpower.width                  = 211
@@ -489,7 +482,7 @@ $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$PictureBox1,
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$everythingsearch,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord))
 $Panel2.controls.AddRange(@($actioncenter,$darkmode,$performancefx,$lightmode,$EActionCenter,$HTrayIcons,$EClipboardHistory,$ELocation,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx,$STrayIcons,$EHibernation))
 $Panel4.controls.AddRange(@($defaultwindowsupdate,$securitywindowsupdate,$Label16,$Label17,$Label18,$Label19,$windowsupdatefix,$Label12))
-$Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$NFS,$Virtualization,$oldpower,$restorepower))
+$Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$NFS,$oldpower,$restorepower))
 
 $brave.Add_Click({
     Write-Host "Installing Brave Browser"
@@ -1017,22 +1010,6 @@ $NFS.Add_Click({
     nfsadmin client localhost config fileaccess=755 SecFlavors=+sys -krb5 -krb5i
     Write-Host "NFS is now setup for user based NFS mounts"
     $ResultText.text = "`r`n" +"`r`n" + "NFS is now setup for user based NFS mounts"
-})
-
-$Virtualization.Add_Click({
-    Enable-WindowsOptionalFeature -Online -FeatureName "HypervisorPlatform" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "VirtualMachinePlatform" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Windows-Subsystem-Linux" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-All" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-Tools-All" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-Management-PowerShell" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-Hypervisor" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-Services" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-Management-Clients" -All
-    cmd /c bcdedit /set hypervisorschedulertype classic
-    Write-Host "HyperV is now installed and configured. Please Reboot before using."
-    $ResultText.text = "`r`n" +"`r`n" + "HyperV is now installed and configured. Please Reboot before using."
 })
 
 $windowsupdatefix.Add_Click({
