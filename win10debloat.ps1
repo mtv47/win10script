@@ -498,13 +498,6 @@ $NFS.height                      = 30
 $NFS.location                    = New-Object System.Drawing.Point(4,57)
 $NFS.Font                        = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
-$laptopnumlock                   = New-Object system.Windows.Forms.Button
-$laptopnumlock.text              = "Laptop Numlock Fix"
-$laptopnumlock.width             = 211
-$laptopnumlock.height            = 30
-$laptopnumlock.location          = New-Object System.Drawing.Point(4,92)
-$laptopnumlock.Font              = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
 $disableupdates                  = New-Object system.Windows.Forms.Button
 $disableupdates.text             = "Disable Update Services"
 $disableupdates.width            = 300
@@ -552,7 +545,7 @@ $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$PictureBox1,
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$everythingsearch,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord))
 $Panel2.controls.AddRange(@($backgroundapps,$cortana,$actioncenter,$darkmode,$performancefx,$onedrive,$lightmode,$EActionCenter,$ECortana,$RBackgroundApps,$HTrayIcons,$EClipboardHistory,$ELocation,$InstallOneDrive,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx,$STrayIcons,$EHibernation))
 $Panel4.controls.AddRange(@($defaultwindowsupdate,$securitywindowsupdate,$Label16,$Label17,$Label18,$Label19,$windowsupdatefix,$disableupdates,$enableupdates,$Label12))
-$Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$NFS,$laptopnumlock,$Virtualization,$oldpower,$restorepower))
+$Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$NFS,$Virtualization,$oldpower,$restorepower))
 
 $brave.Add_Click({
     Write-Host "Installing Brave Browser"
@@ -674,15 +667,6 @@ $gimp.Add_Click({
     winget install -e GIMP.GIMP | Out-Host
     Write-Host "Installed Gimp Image Editor"
     $ResultText.text = "`r`n" + "Finished Installing Gimp Image Editor" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
-$laptopnumlock.Add_Click({
-    Set-ItemProperty -Path "HKU:\.DEFAULT\Control Panel\Keyboard" -Name "InitialKeyboardIndicators" -Type DWord -Value 0
-    Add-Type -AssemblyName System.Windows.Forms
-    If (([System.Windows.Forms.Control]::IsKeyLocked('NumLock'))) {
-        $wsh = New-Object -ComObject WScript.Shell
-        $wsh.SendKeys('{NUMLOCK}')
-    }
 })
 
 $windowssearch.Add_Click({
