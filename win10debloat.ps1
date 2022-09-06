@@ -184,7 +184,7 @@ $discord                         = New-Object system.Windows.Forms.Button
 $discord.text                    = "Discord"
 $discord.width                   = 211
 $discord.height                  = 30
-$discord.location                = New-Object System.Drawing.Point(3,302)
+$discord.location                = New-Object System.Drawing.Point(3,368)
 $discord.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $discord.Add_Click({
