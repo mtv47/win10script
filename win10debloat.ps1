@@ -148,7 +148,7 @@ $putty                           = New-Object system.Windows.Forms.Button
 $putty.text                      = "PuTTY & WinSCP"
 $putty.width                     = 211
 $putty.height                    = 30
-$putty.location                  = New-Object System.Drawing.Point(3,302)
+$putty.location                  = New-Object System.Drawing.Point(4,170)
 $putty.Font                      = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $putty.Add_Click({
@@ -167,7 +167,7 @@ $advancedipscanner               = New-Object system.Windows.Forms.Button
 $advancedipscanner.text          = "Advanced IP Scanner"
 $advancedipscanner.width         = 211
 $advancedipscanner.height        = 30
-$advancedipscanner.location      = New-Object System.Drawing.Point(3,335)
+$advancedipscanner.location      = New-Object System.Drawing.Point(3,203)
 $advancedipscanner.Font          = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $advancedipscanner.Add_Click({
@@ -176,6 +176,23 @@ $advancedipscanner.Add_Click({
     winget install -e Famatech.AdvancedIPScanner | Out-Host
     Write-Host "Installed Advanced IP Scanner"
     $ResultText.text = "`r`n" + "Finished Installing Advanced IP Scanner" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+# Discord
+
+$discord                         = New-Object system.Windows.Forms.Button
+$discord.text                    = "Discord"
+$discord.width                   = 211
+$discord.height                  = 30
+$discord.location                = New-Object System.Drawing.Point(3,302)
+$discord.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$discord.Add_Click({
+    Write-Host "Installing Discord"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing Discord... Please Wait" 
+    winget install -e Discord.Discord | Out-Host
+    if($?) { Write-Host "Installed Discord" }
+    $ResultText.text = "`r`n" + "Finished Installing Discord" + "`r`n" + "`r`n" + "Ready for Next Task"
 })
 
 
@@ -440,13 +457,6 @@ $Label5.height                   = 10
 $Label5.location                 = New-Object System.Drawing.Point(44,877)
 $Label5.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',8)
 
-$discord                         = New-Object system.Windows.Forms.Button
-$discord.text                    = "Discord"
-$discord.width                   = 211
-$discord.height                  = 30
-$discord.location                = New-Object System.Drawing.Point(4,170)
-$discord.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
 $appearancefx                    = New-Object system.Windows.Forms.Button
 $appearancefx.text               = "Appearance Visual FX"
 $appearancefx.width              = 205
@@ -516,14 +526,6 @@ $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$pow
 $Panel2.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx))
 $Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix))
 $Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower))
-
-$discord.Add_Click({
-    Write-Host "Installing Discord"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing Discord... Please Wait" 
-    winget install -e Discord.Discord | Out-Host
-    if($?) { Write-Host "Installed Discord" }
-    $ResultText.text = "`r`n" + "Finished Installing Discord" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
 
 
 $Bloatware = @(
