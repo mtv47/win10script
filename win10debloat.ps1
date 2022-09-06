@@ -250,6 +250,60 @@ $crystaldiskinfo.Add_Click({
 })
 
 
+# CrystalDiskMark
+
+$crystaldiskmark                 = New-Object system.Windows.Forms.Button
+$crystaldiskmark.text            = "CrystalDiskMark"
+$crystaldiskmark.width           = 211
+$crystaldiskmark.height          = 30
+$crystaldiskmark.location        = New-Object System.Drawing.Point(3,373)
+$crystaldiskmark.Font            = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$crystaldiskmark.Add_Click({
+    Write-Host "Installing CrystalDiskMark"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing CrystalDiskMark... Please Wait" 
+    winget install -e CrystalDewWorld.CrystalDiskMark | Out-Host
+    Write-Host "Installed CrystalDiskMark"
+    $ResultText.text = "`r`n" + "Finished Installing CrystalDiskMark" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
+# RevoUninstaller
+
+$revouninstaller                 = New-Object system.Windows.Forms.Button
+$revouninstaller.text            = "RevoUninstaller"
+$revouninstaller.width           = 211
+$revouninstaller.height          = 30
+$revouninstaller.location        = New-Object System.Drawing.Point(3,407)
+$revouninstaller.Font            = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$revouninstaller.Add_Click({
+    Write-Host "Installing RevoUninstaller"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing RevoUninstaller... Please Wait" 
+    winget install -e VSRevoGroup.RevoUninstaller | Out-Host
+    Write-Host "Installed RevoUninstaller"
+    $ResultText.text = "`r`n" + "Finished Installing RevoUninstaller" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
+# NVCleanstall
+
+$nvcleanstall                    = New-Object system.Windows.Forms.Button
+$nvcleanstall.text               = "NVCleanstall"
+$nvcleanstall.width              = 211
+$nvcleanstall.height             = 30
+$nvcleanstall.location           = New-Object System.Drawing.Point(3,441)
+$nvcleanstall.Font               = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$nvcleanstall.Add_Click({
+    Write-Host "Installing NVCleanstall"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing NVCleanstall... Please Wait" 
+    winget install -e TechPowerUp.NVCleanstall | Out-Host
+    Write-Host "Installed NVCleanstall"
+    $ResultText.text = "`r`n" + "Finished Installing NVCleanstall" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
 # ------------------------------------------------------------------------------------------------
 # Communication Menu
 $Label11                         = New-Object System.Windows.Forms.Label
@@ -939,7 +993,7 @@ $windowsupdatefix.Add_Click({
 })
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label1,$Panel3,$ResultText,$Label10))
-$Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord,$cpuZ,$gpuZ,$hwinfotool,$CrystalDiskInfo,$spotify,$Label11,$telegram))
+$Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord,$cpuZ,$gpuZ,$hwinfotool,$CrystalDiskInfo,$spotify,$Label11,$telegram,$crystaldiskmark,$revouninstaller,$nvcleanstall))
 $Panel2.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx))
 $Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix))
 $Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower))
