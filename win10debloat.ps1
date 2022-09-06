@@ -500,8 +500,8 @@ $Panel2.location                 = New-Object System.Drawing.Point(240,54)
 # Communication Menu
 $Label11                         = New-Object System.Windows.Forms.Label
 $Label11.text                    = "Communication"
-$Label11.width                   = 25
-$Label11.height                  = 10
+$Label11.width                   = 211
+$Label11.height                  = 30
 $Label11.location                = New-Object System.Drawing.Point(57,11)
 $Label11.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
 
@@ -511,7 +511,7 @@ $discord                         = New-Object system.Windows.Forms.Button
 $discord.text                    = "Discord"
 $discord.width                   = 211
 $discord.height                  = 30
-$discord.location                = New-Object System.Drawing.Point(3,32)
+$discord.location                = New-Object System.Drawing.Point(3,42)
 $discord.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $discord.Add_Click({
@@ -529,7 +529,7 @@ $telegram                        = New-Object system.Windows.Forms.Button
 $telegram.text                   = "Telegram"
 $telegram.width                  = 211
 $telegram.height                 = 30
-$telegram.location               = New-Object System.Drawing.Point(3,66)
+$telegram.location               = New-Object System.Drawing.Point(3,76)
 $telegram.Font                   = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $telegram.Add_Click({
@@ -1035,7 +1035,7 @@ $Label10.Font                    = New-Object System.Drawing.Font('Microsoft San
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label1,$Panel3,$ResultText,$Label10))
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$cpuZ,$gpuZ,$hwinfotool,$CrystalDiskInfo,$spotify,$crystaldiskmark,$revouninstaller,$nvcleanstall))
-$Panel2.controls.AddRange(@($Label11,$discord,$telegram))
+$Panel2.controls.AddRange(@($Label11,$discord$telegram))
 $Panel3.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$reinstallbloat,$WarningLabel,$appearancefx,$ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower))
 $Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix))
 
