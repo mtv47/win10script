@@ -540,7 +540,7 @@ $Label3.text                     = "System Tweaks"
 $Label3.AutoSize                 = $true
 $Label3.width                    = 230
 $Label3.height                   = 25
-$Label3.location                 = New-Object System.Drawing.Point(400,11)
+$Label3.location                 = New-Object System.Drawing.Point(450,11)
 $Label3.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',24)
 
 $darkmode                        = New-Object system.Windows.Forms.Button
