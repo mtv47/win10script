@@ -560,57 +560,6 @@ $Label3.location                 = New-Object System.Drawing.Point(460,11)
 $Label3.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',24)
 
 
-# PerformamnceFX
-
-$performancefx                   = New-Object system.Windows.Forms.Button
-$performancefx.text              = "Performance Visual FX"
-$performancefx.width             = 205
-$performancefx.height            = 30
-$performancefx.location          = New-Object System.Drawing.Point(3,419)
-$performancefx.Font              = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$performancefx.Add_Click({
-    Write-Host "Adjusting visual effects for performance..."
-    Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "DragFullWindows" -Type String -Value 0
-    Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Type String -Value 200
-    Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "UserPreferencesMask" -Type Binary -Value ([byte[]](144,18,3,128,16,0,0,0))
-    Set-ItemProperty -Path "HKCU:\Control Panel\Desktop\WindowMetrics" -Name "MinAnimate" -Type String -Value 0
-    Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Type DWord -Value 0
-    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewAlphaSelect" -Type DWord -Value 0
-    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewShadow" -Type DWord -Value 0
-    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarAnimations" -Type DWord -Value 0
-    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name "VisualFXSetting" -Type DWord -Value 3
-    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "EnableAeroPeek" -Type DWord -Value 0
-    Write-Host "Adjusted visual effects for performance"
-    $ResultText.text = "`r`n" +"`r`n" + "Adjusted VFX for performance"
-})
-
-
-# AppearanceFX
-
-$appearancefx                    = New-Object system.Windows.Forms.Button
-$appearancefx.text               = "Appearance Visual FX"
-$appearancefx.width              = 205
-$appearancefx.height             = 30
-$appearancefx.location           = New-Object System.Drawing.Point(4,385)
-$appearancefx.Font               = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$appearancefx.Add_Click({
-	Write-Output "Adjusting visual effects for appearance..."
-	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "DragFullWindows" -Type String -Value 1
-	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Type String -Value 400
-	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "UserPreferencesMask" -Type Binary -Value ([byte[]](158,30,7,128,18,0,0,0))
-	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop\WindowMetrics" -Name "MinAnimate" -Type String -Value 1
-	Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewAlphaSelect" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewShadow" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarAnimations" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name "VisualFXSetting" -Type DWord -Value 3
-	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "EnableAeroPeek" -Type DWord -Value 1
-    $ResultText.text = "`r`n" +"`r`n" + "Visual effects are set for appearance (Defaults)"
-})
-
-
 # DarkMode
 
 $darkmode                        = New-Object system.Windows.Forms.Button
@@ -643,6 +592,58 @@ $lightmode.Add_Click({
     Write-Host "Switched Back to Light Mode"
     $ResultText.text = "`r`n" +"`r`n" + "Enabled Light Mode"
 })
+
+
+# PerformamnceFX
+
+$performancefx                   = New-Object system.Windows.Forms.Button
+$performancefx.text              = "Performance Visual FX"
+$performancefx.width             = 205
+$performancefx.height            = 30
+$performancefx.location          = New-Object System.Drawing.Point(3,244)
+$performancefx.Font              = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$performancefx.Add_Click({
+    Write-Host "Adjusting visual effects for performance..."
+    Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "DragFullWindows" -Type String -Value 0
+    Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Type String -Value 200
+    Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "UserPreferencesMask" -Type Binary -Value ([byte[]](144,18,3,128,16,0,0,0))
+    Set-ItemProperty -Path "HKCU:\Control Panel\Desktop\WindowMetrics" -Name "MinAnimate" -Type String -Value 0
+    Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Type DWord -Value 0
+    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewAlphaSelect" -Type DWord -Value 0
+    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewShadow" -Type DWord -Value 0
+    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarAnimations" -Type DWord -Value 0
+    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name "VisualFXSetting" -Type DWord -Value 3
+    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "EnableAeroPeek" -Type DWord -Value 0
+    Write-Host "Adjusted visual effects for performance"
+    $ResultText.text = "`r`n" +"`r`n" + "Adjusted VFX for performance"
+})
+
+
+# AppearanceFX
+
+$appearancefx                    = New-Object system.Windows.Forms.Button
+$appearancefx.text               = "Appearance Visual FX"
+$appearancefx.width              = 205
+$appearancefx.height             = 30
+$appearancefx.location           = New-Object System.Drawing.Point(4,278)
+$appearancefx.Font               = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$appearancefx.Add_Click({
+	Write-Output "Adjusting visual effects for appearance..."
+	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "DragFullWindows" -Type String -Value 1
+	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Type String -Value 400
+	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "UserPreferencesMask" -Type Binary -Value ([byte[]](158,30,7,128,18,0,0,0))
+	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop\WindowMetrics" -Name "MinAnimate" -Type String -Value 1
+	Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewAlphaSelect" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewShadow" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarAnimations" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name "VisualFXSetting" -Type DWord -Value 3
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "EnableAeroPeek" -Type DWord -Value 1
+    $ResultText.text = "`r`n" +"`r`n" + "Visual effects are set for appearance (Defaults)"
+})
+
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Old Pannels
