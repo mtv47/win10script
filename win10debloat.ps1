@@ -652,7 +652,7 @@ $ncpa                            = New-Object system.Windows.Forms.Button
 $ncpa.text                       = "Network Connections"
 $ncpa.width                      = 211
 $ncpa.height                     = 30
-$ncpa.location                   = New-Object System.Drawing.Point(4,159)
+$ncpa.location                   = New-Object System.Drawing.Point(4,179)
 $ncpa.Font                       = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $ncpa.Add_Click({
@@ -663,7 +663,7 @@ $oldcontrolpanel                 = New-Object system.Windows.Forms.Button
 $oldcontrolpanel.text            = "Win7 Control Panel"
 $oldcontrolpanel.width           = 211
 $oldcontrolpanel.height          = 30
-$oldcontrolpanel.location        = New-Object System.Drawing.Point(4,193)
+$oldcontrolpanel.location        = New-Object System.Drawing.Point(4,213)
 $oldcontrolpanel.Font            = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $oldcontrolpanel.Add_Click({
@@ -675,7 +675,7 @@ $oldpower                        = New-Object system.Windows.Forms.Button
 $oldpower.text                   = "Win7 Power Panel"
 $oldpower.width                  = 211
 $oldpower.height                 = 30
-$oldpower.location               = New-Object System.Drawing.Point(4,227)
+$oldpower.location               = New-Object System.Drawing.Point(4,247)
 $oldpower.Font                   = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $oldpower.Add_Click({
@@ -687,7 +687,7 @@ $oldsoundpanel                   = New-Object system.Windows.Forms.Button
 $oldsoundpanel.text              = "Win7 Sound Panel"
 $oldsoundpanel.width             = 211
 $oldsoundpanel.height            = 30
-$oldsoundpanel.location          = New-Object System.Drawing.Point(5,262)
+$oldsoundpanel.location          = New-Object System.Drawing.Point(5,282)
 $oldsoundpanel.Font              = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $oldsoundpanel.Add_Click({
@@ -699,7 +699,7 @@ $oldsystempanel                  = New-Object system.Windows.Forms.Button
 $oldsystempanel.text             = "Win7 System Panel"
 $oldsystempanel.width            = 211
 $oldsystempanel.height           = 30
-$oldsystempanel.location         = New-Object System.Drawing.Point(5,298)
+$oldsystempanel.location         = New-Object System.Drawing.Point(5,318)
 $oldsystempanel.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $oldsystempanel.Add_Click({
