@@ -1123,8 +1123,8 @@ $Label10.Font                    = New-Object System.Drawing.Font('Microsoft San
 # Add the controls to the form
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label1,$Panel3,$ResultText,$Label10))
-$Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$cpuZ,$gpuZ,$hwinfotool,$CrystalDiskInfo,$spotify,$crystaldiskmark,$revouninstaller,$nvcleanstall,$malwarebytes,$steam,$origin,$rockstar,$epic))
-$Panel2.controls.AddRange(@($Label11,$discord,$telegram))
+$Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$cpuZ,$gpuZ,$hwinfotool,$CrystalDiskInfo,$spotify,$crystaldiskmark,$revouninstaller,$nvcleanstall,$malwarebytes))
+$Panel2.controls.AddRange(@($Label11,$discord,$telegram,$Label12,$steam,$origin,$rockstar,$epic))
 $Panel3.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$reinstallbloat,$WarningLabel,$appearancefx,$ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower))
 $Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix))
 
