@@ -417,7 +417,7 @@ $vscode                          = New-Object system.Windows.Forms.Button
 $vscode.text                     = "VS Code"
 $vscode.width                    = 211
 $vscode.height                   = 30
-$vscode.location                 = New-Object System.Drawing.Point(4,907)
+$vscode.location                 = New-Object System.Drawing.Point(4,887)
 $vscode.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $vscode.Add_Click({
