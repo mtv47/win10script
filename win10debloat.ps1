@@ -133,13 +133,6 @@ $Label3.height                   = 25
 $Label3.location                 = New-Object System.Drawing.Point(349,11)
 $Label3.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',24)
 
-$backgroundapps                  = New-Object system.Windows.Forms.Button
-$backgroundapps.text             = "Disable Background Apps"
-$backgroundapps.width            = 205
-$backgroundapps.height           = 30
-$backgroundapps.location         = New-Object System.Drawing.Point(3,453)
-$backgroundapps.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
 $cortana                         = New-Object system.Windows.Forms.Button
 $cortana.text                    = "Disable Cortana (Search)"
 $cortana.width                   = 205
@@ -273,13 +266,6 @@ $ECortana.width                  = 205
 $ECortana.height                 = 30
 $ECortana.location               = New-Object System.Drawing.Point(3,622)
 $ECortana.Font                   = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$RBackgroundApps                 = New-Object system.Windows.Forms.Button
-$RBackgroundApps.text            = "Allow Background Apps"
-$RBackgroundApps.width           = 205
-$RBackgroundApps.height          = 30
-$RBackgroundApps.location        = New-Object System.Drawing.Point(3,487)
-$RBackgroundApps.Font            = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $HTrayIcons                      = New-Object system.Windows.Forms.Button
 $HTrayIcons.text                 = "Hide Tray Icons"
@@ -543,7 +529,7 @@ $restorepower.Font               = New-Object System.Drawing.Font('Microsoft San
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$PictureBox1,$Label1,$Panel3,$ResultText,$Label10,$Label11))
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$everythingsearch,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord))
-$Panel2.controls.AddRange(@($backgroundapps,$cortana,$actioncenter,$darkmode,$performancefx,$onedrive,$lightmode,$EActionCenter,$ECortana,$RBackgroundApps,$HTrayIcons,$EClipboardHistory,$ELocation,$InstallOneDrive,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx,$STrayIcons,$EHibernation))
+$Panel2.controls.AddRange(@($cortana,$actioncenter,$darkmode,$performancefx,$onedrive,$lightmode,$EActionCenter,$ECortana,$HTrayIcons,$EClipboardHistory,$ELocation,$InstallOneDrive,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx,$STrayIcons,$EHibernation))
 $Panel4.controls.AddRange(@($defaultwindowsupdate,$securitywindowsupdate,$Label16,$Label17,$Label18,$Label19,$windowsupdatefix,$disableupdates,$enableupdates,$Label12))
 $Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$NFS,$Virtualization,$oldpower,$restorepower))
 
@@ -752,16 +738,6 @@ $windowssearch.Add_Click({
     Write-Host "Search and Start Menu Tweaks Complete"
     $ResultText.text = "`r`n" +"`r`n" + "Search and Start Menu Tweaks Complete"
     }
-})
-
-$backgroundapps.Add_Click({
-    Write-Host "Disabling Background application access..."
-    Get-ChildItem -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" -Exclude "Microsoft.Windows.Cortana*" | ForEach {
-        Set-ItemProperty -Path $_.PsPath -Name "Disabled" -Type DWord -Value 1
-        Set-ItemProperty -Path $_.PsPath -Name "DisabledByUser" -Type DWord -Value 1
-    }
-    Write-Host "Disabled Background application access"
-    $ResultText.text = "`r`n" +"`r`n" + "Disabled Background application access"
 })
 
 $cortana.Add_Click({
@@ -1105,16 +1081,6 @@ $ELocation.Add_Click({
 	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" -Name "LetAppsAccessLocation_ForceDenyTheseApps" -ErrorAction SilentlyContinue
 	Write-Host "Done - Reverted to Stock Settings"
     $ResultText.text = "`r`n" +"`r`n" + "Location Tracking now on... Reboot to check."
-})
-
-$RBackgroundApps.Add_Click({
-	Write-Host "Allowing Background Apps..."
-	Get-ChildItem -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" -Exclude "Microsoft.Windows.Cortana*" | ForEach {
-		Remove-ItemProperty -Path $_.PsPath -Name "Disabled" -ErrorAction SilentlyContinue
-		Remove-ItemProperty -Path $_.PsPath -Name "DisabledByUser" -ErrorAction SilentlyContinue
-	}
-	Write-Host "Done - Reverted to Stock Settings"
-    $ResultText.text = "`r`n" +"`r`n" + "Enabled Background Apps"
 })
 
 $EHibernation.Add_Click({
