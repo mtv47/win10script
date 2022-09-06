@@ -84,13 +84,6 @@ $adobereader.height              = 30
 $adobereader.location            = New-Object System.Drawing.Point(3,865)
 $adobereader.Font                = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
-$notepad                         = New-Object system.Windows.Forms.Button
-$notepad.text                    = "Notepad++"
-$notepad.width                   = 212
-$notepad.height                  = 30
-$notepad.location                = New-Object System.Drawing.Point(3,831)
-$notepad.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
 $gchrome                         = New-Object system.Windows.Forms.Button
 $gchrome.text                    = "Google Chrome"
 $gchrome.width                   = 212
@@ -647,7 +640,7 @@ $restorepower.location           = New-Object System.Drawing.Point(4,159)
 $restorepower.Font               = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$PictureBox1,$Label1,$Panel3,$ResultText,$Label10,$Label11,$urlfixwinstartup,$urlremovevirus,$urlcreateiso))
-$Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereader,$notepad,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$everythingsearch,$sumatrapdf,$vscodium,$imageglass,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$translucenttb,$githubdesktop,$discord,$autohotkey))
+$Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$everythingsearch,$sumatrapdf,$vscodium,$imageglass,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$translucenttb,$githubdesktop,$discord,$autohotkey))
 $Panel2.controls.AddRange(@($essentialtweaks,$backgroundapps,$cortana,$actioncenter,$darkmode,$performancefx,$onedrive,$lightmode,$essentialundo,$EActionCenter,$ECortana,$RBackgroundApps,$HTrayIcons,$EClipboardHistory,$ELocation,$InstallOneDrive,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx,$STrayIcons,$EHibernation,$dualboottime))
 $Panel4.controls.AddRange(@($defaultwindowsupdate,$securitywindowsupdate,$Label16,$Label17,$Label18,$Label19,$windowsupdatefix,$disableupdates,$enableupdates,$Label12))
 $Panel3.controls.AddRange(@($yourphonefix,$ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$NFS,$laptopnumlock,$Virtualization,$oldpower,$restorepower))
@@ -704,14 +697,6 @@ $adobereader.Add_Click({
     winget install -e --id Adobe.Acrobat.Reader.64-bit | Out-Host
     if($?) { Write-Host "Installed Adobe Reader DC" }
     $ResultText.text = "`r`n" + "Finished Installing Adobe Reader DC" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
-$notepad.Add_Click({
-    Write-Host "Installing Notepad++"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing Notepad++... Please Wait" 
-    winget install -e Notepad++.Notepad++ | Out-Host
-    if($?) { Write-Host "Installed Notepad++" }
-    $ResultText.text = "`r`n" + "Finished Installing NotePad++" + "`r`n" + "`r`n" + "Ready for Next Task"
 })
 
 $vlc.Add_Click({
