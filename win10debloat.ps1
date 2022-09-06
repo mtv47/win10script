@@ -256,7 +256,7 @@ $Label11                         = New-Object System.Windows.Forms.Label
 $Label11.text                    = "Communication"
 $Label11.width                   = 211
 $Label11.height                  = 30
-$Label11.location                = New-Object System.Drawing.Point(3,430)
+$Label11.location                = New-Object System.Drawing.Point(67,430)
 $Label11.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
 
 # Discord
@@ -283,7 +283,7 @@ $telegram                        = New-Object system.Windows.Forms.Button
 $telegram.text                   = "Telegram"
 $telegram.width                  = 211
 $telegram.height                 = 30
-$telegram.location               = New-Object System.Drawing.Point(67,498)
+$telegram.location               = New-Object System.Drawing.Point(3,498)
 $telegram.Font                   = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $telegram.Add_Click({
