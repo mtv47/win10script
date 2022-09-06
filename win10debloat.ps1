@@ -995,6 +995,20 @@ $windowsupdatefix.Add_Click({
 
 })
 
+# Update winget
+
+$wingetupgrade                = New-Object system.Windows.Forms.Button
+$wingetupgrade.text           = "Update winget"
+$wingetupgrade.width          = 300
+$wingetupgrade.height         = 30
+$wingetupgrade.location       = New-Object System.Drawing.Point(25,96)
+$wingetupgrade.Font           = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
+
+$wingetupgrade.add_Click({
+    winget upgrade --all
+})
+
+
 
 # ------------------------------------------------------------------------------------------------------------------------------
 # Windows Bloatware
@@ -1171,6 +1185,6 @@ $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label1,$Pane
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$cpuZ,$gpuZ,$hwinfotool,$CrystalDiskInfo,$spotify,$crystaldiskmark,$revouninstaller,$nvcleanstall,$malwarebytes))
 $Panel2.controls.AddRange(@($Label11,$discord,$telegram,$Label12,$steam,$origin,$epic,$superposition,$Label13,$libreoffice,$obsidian))
 $Panel3.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$reinstallbloat,$WarningLabel,$appearancefx,$ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower))
-$Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix))
+$Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix,$wingetupgrade))
 
 [void]$Form.ShowDialog()
