@@ -214,6 +214,42 @@ $gpuZ.Add_Click({
 })
 
 
+# HWiNFO
+
+$hwinfotool                      = New-Object system.Windows.Forms.Button
+$hwinfotool.text                 = "HWiNFO"
+$hwinfotool.width                = 211
+$hwinfotool.height               = 30
+$hwinfotool.location             = New-Object System.Drawing.Point(3,305)
+$hwinfotool.Font                 = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$hwinfotool.Add_Click({
+    Write-Host "Installing HWiNFO"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing HWiNFO... Please Wait" 
+    winget install -e HWiNFO.HWiNFO | Out-Host
+    Write-Host "Installed HWiNFO"
+    $ResultText.text = "`r`n" + "Finished Installing HWiNFO" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
+# CrystalDiskInfo
+
+$crystaldiskinfo                 = New-Object system.Windows.Forms.Button
+$crystaldiskinfo.text            = "CrystalDiskInfo"
+$crystaldiskinfo.width           = 211
+$crystaldiskinfo.height          = 30
+$crystaldiskinfo.location        = New-Object System.Drawing.Point(3,339)
+$crystaldiskinfo.Font            = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$crystaldiskinfo.Add_Click({
+    Write-Host "Installing CrystalDiskInfo"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing CrystalDiskInfo... Please Wait" 
+    winget install -e CrystalDewWorld.CrystalDiskInfo | Out-Host
+    Write-Host "Installed CrystalDiskInfo"
+    $ResultText.text = "`r`n" + "Finished Installing CrystalDiskInfo" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
 # Discord
 
 $discord                         = New-Object system.Windows.Forms.Button
@@ -558,7 +594,7 @@ $oldpower.location               = New-Object System.Drawing.Point(4,227)
 $oldpower.Font                   = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label1,$Panel3,$ResultText,$Label10))
-$Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord,$cpuZ,$gpuZ))
+$Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord,$cpuZ,$gpuZ,$HWiNFO,$CrystalDiskInfo))
 $Panel2.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx))
 $Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix))
 $Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower))
