@@ -59,7 +59,7 @@ $Label1.text                     = "Install"
 $Label1.AutoSize                 = $true
 $Label1.width                    = 230
 $Label1.height                   = 25
-$Label1.location                 = New-Object System.Drawing.Point(126,11)
+$Label1.location                 = New-Object System.Drawing.Point(176,11)
 $Label1.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',24)
 
 $Label2                          = New-Object system.Windows.Forms.Label
