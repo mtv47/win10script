@@ -558,7 +558,7 @@ $Label12                         = New-Object System.Windows.Forms.Label
 $Label12.text                    = "Gaming Software"
 $Label12.width                   = 230
 $Label12.height                  = 25
-$Label12.location                = New-Object System.Drawing.Point(57,100)
+$Label12.location                = New-Object System.Drawing.Point(57,110)
 $Label12.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
 
 # Steam
@@ -567,7 +567,7 @@ $steam                           = New-Object system.Windows.Forms.Button
 $steam.text                      = "Steam"
 $steam.width                     = 211
 $steam.height                    = 30
-$steam.location                  = New-Object System.Drawing.Point(3,128)
+$steam.location                  = New-Object System.Drawing.Point(3,138)
 $steam.Font                      = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $steam.Add_Click({
@@ -585,7 +585,7 @@ $origin                          = New-Object system.Windows.Forms.Button
 $origin.text                     = "EA Origin"
 $origin.width                    = 211
 $origin.height                   = 30
-$origin.location                 = New-Object System.Drawing.Point(3,162)
+$origin.location                 = New-Object System.Drawing.Point(3,172)
 $origin.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $origin.Add_Click({
@@ -603,7 +603,7 @@ $epic                            = New-Object system.Windows.Forms.Button
 $epic.text                       = "Epic Games"
 $epic.width                      = 211
 $epic.height                     = 30
-$epic.location                   = New-Object System.Drawing.Point(3,196)
+$epic.location                   = New-Object System.Drawing.Point(3,206)
 $epic.Font                       = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $epic.Add_Click({
@@ -612,23 +612,6 @@ $epic.Add_Click({
     winget install -e EpicGames.EpicGamesLauncher | Out-Host
     if($?) { Write-Host "Installed Epic Games" }
     $ResultText.text = "`r`n" + "Finished Installing Epic Games" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
-
-# Rockstar Games Launcher
-
-$rockstar                        = New-Object system.Windows.Forms.Button
-$rockstar.text                   = "Rockstar Games Launcher"
-$rockstar.width                  = 211
-$rockstar.height                 = 30
-$rockstar.location               = New-Object System.Drawing.Point(3,230)
-
-$rockstar.Add_Click({
-    Write-Host "Installing Rockstar Games Launcher"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing Rockstar Games Launcher... Please Wait" 
-    winget install -e RockstarGames.RockstarGamesLauncher | Out-Host
-    if($?) { Write-Host "Installed Rockstar Games Launcher" }
-    $ResultText.text = "`r`n" + "Finished Installing Rockstar Games Launcher" + "`r`n" + "`r`n" + "Ready for Next Task"
 })
 
 
@@ -1124,7 +1107,7 @@ $Label10.Font                    = New-Object System.Drawing.Font('Microsoft San
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label1,$Panel3,$ResultText,$Label10))
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$cpuZ,$gpuZ,$hwinfotool,$CrystalDiskInfo,$spotify,$crystaldiskmark,$revouninstaller,$nvcleanstall,$malwarebytes))
-$Panel2.controls.AddRange(@($Label11,$discord,$telegram,$Label12,$steam,$origin,$rockstar,$epic))
+$Panel2.controls.AddRange(@($Label11,$discord,$telegram,$Label12,$steam,$origin,$epic))
 $Panel3.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$reinstallbloat,$WarningLabel,$appearancefx,$ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower))
 $Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix))
 
