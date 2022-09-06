@@ -388,7 +388,7 @@ $Label7.text                     = "Coding Tools"
 $Label7.AutoSize                 = $true
 $Label7.width                    = 25
 $Label7.height                   = 10
-$Label7.location                 = New-Object System.Drawing.Point(60,740)
+$Label7.location                 = New-Object System.Drawing.Point(60,800)
 $Label7.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
 
 
@@ -398,7 +398,7 @@ $githubdesktop                   = New-Object system.Windows.Forms.Button
 $githubdesktop.text              = "Github Desktop"
 $githubdesktop.width             = 211
 $githubdesktop.height            = 30
-$githubdesktop.location          = New-Object System.Drawing.Point(4,763)
+$githubdesktop.location          = New-Object System.Drawing.Point(4,823)
 $githubdesktop.Font              = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $githubdesktop.Add_Click({
@@ -417,7 +417,7 @@ $vscode                          = New-Object system.Windows.Forms.Button
 $vscode.text                     = "VS Code"
 $vscode.width                    = 211
 $vscode.height                   = 30
-$vscode.location                 = New-Object System.Drawing.Point(4,797)
+$vscode.location                 = New-Object System.Drawing.Point(4,857)
 $vscode.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $vscode.Add_Click({
