@@ -133,13 +133,6 @@ $Label3.height                   = 25
 $Label3.location                 = New-Object System.Drawing.Point(349,11)
 $Label3.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',24)
 
-$cortana                         = New-Object system.Windows.Forms.Button
-$cortana.text                    = "Disable Cortana (Search)"
-$cortana.width                   = 205
-$cortana.height                  = 30
-$cortana.location                = New-Object System.Drawing.Point(2,588)
-$cortana.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
 $actioncenter                    = New-Object system.Windows.Forms.Button
 $actioncenter.text               = "Disable Action Center"
 $actioncenter.width              = 205
@@ -259,13 +252,6 @@ $EActionCenter.width             = 205
 $EActionCenter.height            = 30
 $EActionCenter.location          = New-Object System.Drawing.Point(3,210)
 $EActionCenter.Font              = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
-$ECortana                        = New-Object system.Windows.Forms.Button
-$ECortana.text                   = "Enable Cortana (Search)"
-$ECortana.width                  = 205
-$ECortana.height                 = 30
-$ECortana.location               = New-Object System.Drawing.Point(3,622)
-$ECortana.Font                   = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $HTrayIcons                      = New-Object system.Windows.Forms.Button
 $HTrayIcons.text                 = "Hide Tray Icons"
@@ -529,7 +515,7 @@ $restorepower.Font               = New-Object System.Drawing.Font('Microsoft San
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$PictureBox1,$Label1,$Panel3,$ResultText,$Label10,$Label11))
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$everythingsearch,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord))
-$Panel2.controls.AddRange(@($cortana,$actioncenter,$darkmode,$performancefx,$onedrive,$lightmode,$EActionCenter,$ECortana,$HTrayIcons,$EClipboardHistory,$ELocation,$InstallOneDrive,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx,$STrayIcons,$EHibernation))
+$Panel2.controls.AddRange(@($actioncenter,$darkmode,$performancefx,$onedrive,$lightmode,$EActionCenter,$HTrayIcons,$EClipboardHistory,$ELocation,$InstallOneDrive,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx,$STrayIcons,$EHibernation))
 $Panel4.controls.AddRange(@($defaultwindowsupdate,$securitywindowsupdate,$Label16,$Label17,$Label18,$Label19,$windowsupdatefix,$disableupdates,$enableupdates,$Label12))
 $Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$NFS,$Virtualization,$oldpower,$restorepower))
 
@@ -738,29 +724,6 @@ $windowssearch.Add_Click({
     Write-Host "Search and Start Menu Tweaks Complete"
     $ResultText.text = "`r`n" +"`r`n" + "Search and Start Menu Tweaks Complete"
     }
-})
-
-$cortana.Add_Click({
-    Write-Host "Disabling Cortana..."
-    If (!(Test-Path "HKCU:\SOFTWARE\Microsoft\Personalization\Settings")) {
-        New-Item -Path "HKCU:\SOFTWARE\Microsoft\Personalization\Settings" -Force | Out-Null
-    }
-    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Personalization\Settings" -Name "AcceptedPrivacyPolicy" -Type DWord -Value 0
-    If (!(Test-Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization")) {
-        New-Item -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization" -Force | Out-Null
-    }
-    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization" -Name "RestrictImplicitTextCollection" -Type DWord -Value 1
-    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization" -Name "RestrictImplicitInkCollection" -Type DWord -Value 1
-    If (!(Test-Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore")) {
-        New-Item -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" -Force | Out-Null
-    }
-    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" -Name "HarvestContacts" -Type DWord -Value 0
-    If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search")) {
-        New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" -Force | Out-Null
-    }
-    Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" -Name "AllowCortana" -Type DWord -Value 0
-    Write-Host "Disabled Cortana"
-    $ResultText.text = "`r`n" +"`r`n" + "Disabled Cortana"
 })
 
 $Bloatware = @(
@@ -1013,29 +976,6 @@ $EActionCenter.Add_Click({
 	Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PushNotifications" -Name "ToastEnabled" -ErrorAction SilentlyContinue
 	Write-Host "Done - Reverted to Stock Settings"
     $ResultText.text = "`r`n" +"`r`n" + "Enabled Action Center"
-})
-
-$ECortana.Add_Click({
-    Write-Host "Enabling Cortana..."
-	Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Personalization\Settings" -Name "AcceptedPrivacyPolicy" -ErrorAction SilentlyContinue
-	If (!(Test-Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore")) {
-		New-Item -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" -Force | Out-Null
-	}
-	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization" -Name "RestrictImplicitTextCollection" -Type DWord -Value 0
-	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization" -Name "RestrictImplicitInkCollection" -Type DWord -Value 0
-	Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" -Name "HarvestContacts" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" -Name "AllowCortana" -ErrorAction SilentlyContinue
-	Write-Host "Restoring Windows Search..."
-	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" -Name "BingSearchEnabled" -Type DWord -Value "1"
-	Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" -Name "CortanaConsent" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" -Name "DisableWebSearch" -ErrorAction SilentlyContinue
-	Write-Host "Restore and Starting Windows Search Service..."
-    Set-Service "WSearch" -StartupType Automatic
-    Start-Service "WSearch" -WarningAction SilentlyContinue
-    Write-Host "Restore Windows Search Icon..."
-	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" -Name "SearchboxTaskbarMode" -Type DWord -Value 1
-	Write-Host "Done - Reverted to Stock Settings"
-    $ResultText.text = "`r`n" +"`r`n" + "Enabled Cortana and Restored Search"
 })
 
 $HTrayIcons.Add_Click({
