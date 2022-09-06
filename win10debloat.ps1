@@ -260,13 +260,6 @@ $EClipboardHistory.height        = 30
 $EClipboardHistory.location      = New-Object System.Drawing.Point(3,688)
 $EClipboardHistory.Font          = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
-$ELocation                       = New-Object system.Windows.Forms.Button
-$ELocation.text                  = "Enable Location Tracking"
-$ELocation.width                 = 205
-$ELocation.height                = 30
-$ELocation.location              = New-Object System.Drawing.Point(2,655)
-$ELocation.Font                  = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
 $everythingsearch                = New-Object system.Windows.Forms.Button
 $everythingsearch.text           = "Everything Search"
 $everythingsearch.width          = 211
@@ -473,7 +466,7 @@ $restorepower.Font               = New-Object System.Drawing.Font('Microsoft San
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$PictureBox1,$Label1,$Panel3,$ResultText,$Label10,$Label11))
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$everythingsearch,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord))
-$Panel2.controls.AddRange(@($actioncenter,$darkmode,$performancefx,$lightmode,$EActionCenter,$HTrayIcons,$EClipboardHistory,$ELocation,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx,$STrayIcons))
+$Panel2.controls.AddRange(@($actioncenter,$darkmode,$performancefx,$lightmode,$EActionCenter,$HTrayIcons,$EClipboardHistory,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx,$STrayIcons))
 $Panel4.controls.AddRange(@($defaultwindowsupdate,$securitywindowsupdate,$Label16,$Label17,$Label18,$Label19,$windowsupdatefix,$Label12))
 $Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$NFS,$oldpower,$restorepower))
 
@@ -929,26 +922,6 @@ $EClipboardHistory.Add_Click({
     Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "AllowClipboardHistory" -ErrorAction SilentlyContinue
 	Write-Host "Done - Reverted to Stock Settings"
     $ResultText.text = "`r`n" +"`r`n" + "Enabled Clipboard History"
-})
-
-$ELocation.Add_Click({
-	Write-Host "Enabling Location Provider..."
-	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" -Name "DisableWindowsLocationProvider" -ErrorAction SilentlyContinue
-	Write-Host "Enabling Location Scripting..."
-    Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" -Name "DisableLocationScripting" -ErrorAction SilentlyContinue
-	Write-Host "Enabling Location..."
-	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" -Name "DisableLocation" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" -Name "SensorPermissionState" -ErrorAction SilentlyContinue
-    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" -Name "Value" -Type String -Value "Allow"
-	Write-Host "Allow access to Location..."
-	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" -Name "Value" -Type String -Value "Allow"
-	Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\lfsvc\Service\Configuration" -Name "Status" -Type DWord -Value "1"
-	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" -Name "LetAppsAccessLocation" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" -Name "LetAppsAccessLocation_UserInControlOfTheseApps" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" -Name "LetAppsAccessLocation_ForceAllowTheseApps" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" -Name "LetAppsAccessLocation_ForceDenyTheseApps" -ErrorAction SilentlyContinue
-	Write-Host "Done - Reverted to Stock Settings"
-    $ResultText.text = "`r`n" +"`r`n" + "Location Tracking now on... Reboot to check."
 })
 
 $DisableNumLock.Add_Click({
