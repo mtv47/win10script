@@ -340,14 +340,6 @@ $oldsystempanel.height           = 30
 $oldsystempanel.location         = New-Object System.Drawing.Point(5,298)
 $oldsystempanel.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
-$Label12                         = New-Object system.Windows.Forms.Label
-$Label12.text                    = "NOT RECOMMENDED!!!"
-$Label12.AutoSize                = $true
-$Label12.width                   = 25
-$Label12.height                  = 10
-$Label12.location                = New-Object System.Drawing.Point(98,275)
-$Label12.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
-
 $oldpower                        = New-Object system.Windows.Forms.Button
 $oldpower.text                   = "Win7 Power Panel"
 $oldpower.width                  = 211
@@ -358,7 +350,7 @@ $oldpower.Font                   = New-Object System.Drawing.Font('Microsoft San
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label1,$Panel3,$ResultText,$Label10))
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord))
 $Panel2.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx))
-$Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix,$Label12))
+$Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix))
 $Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower))
 
 $brave.Add_Click({
