@@ -275,7 +275,7 @@ $Label9.text                     = "Web Browsers"
 $Label9.AutoSize                 = $true
 $Label9.width                    = 25
 $Label9.height                   = 10
-$Label9.location                 = New-Object System.Drawing.Point(67,406)
+$Label9.location                 = New-Object System.Drawing.Point(67,446)
 $Label9.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
 
 
@@ -285,7 +285,7 @@ $brave                           = New-Object system.Windows.Forms.Button
 $brave.text                      = "Brave Browser"
 $brave.width                     = 212
 $brave.height                    = 30
-$brave.location                  = New-Object System.Drawing.Point(4,426)
+$brave.location                  = New-Object System.Drawing.Point(4,466)
 $brave.Font                      = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $brave.Add_Click({
@@ -303,7 +303,7 @@ $firefox                         = New-Object system.Windows.Forms.Button
 $firefox.text                    = "Firefox"
 $firefox.width                   = 212
 $firefox.height                  = 30
-$firefox.location                = New-Object System.Drawing.Point(4,461)
+$firefox.location                = New-Object System.Drawing.Point(4,501)
 $firefox.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $firefox.Add_Click({
@@ -321,7 +321,7 @@ $gchrome                         = New-Object system.Windows.Forms.Button
 $gchrome.text                    = "Google Chrome"
 $gchrome.width                   = 212
 $gchrome.height                  = 30
-$gchrome.location                = New-Object System.Drawing.Point(3,494)
+$gchrome.location                = New-Object System.Drawing.Point(3,534)
 $gchrome.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $gchrome.Add_Click({
@@ -340,7 +340,7 @@ $Label8.text                     = "Video and Image Tools"
 $Label8.AutoSize                 = $true
 $Label8.width                    = 25
 $Label8.height                   = 10
-$Label8.location                 = New-Object System.Drawing.Point(41,537)
+$Label8.location                 = New-Object System.Drawing.Point(41,577)
 $Label8.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
 
 
@@ -350,7 +350,7 @@ $gimp                            = New-Object system.Windows.Forms.Button
 $gimp.text                       = "GIMP (Image Editor)"
 $gimp.width                      = 212
 $gimp.height                     = 30
-$gimp.location                   = New-Object System.Drawing.Point(3,561)
+$gimp.location                   = New-Object System.Drawing.Point(3,601)
 $gimp.Font                       = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $gimp.Add_Click({
@@ -368,7 +368,7 @@ $vlc                             = New-Object system.Windows.Forms.Button
 $vlc.text                        = "VLC"
 $vlc.width                       = 212
 $vlc.height                      = 30
-$vlc.location                    = New-Object System.Drawing.Point(4,595)
+$vlc.location                    = New-Object System.Drawing.Point(4,635)
 $vlc.Font                        = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $vlc.Add_Click({
