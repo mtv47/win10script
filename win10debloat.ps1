@@ -566,7 +566,7 @@ $darkmode                        = New-Object system.Windows.Forms.Button
 $darkmode.text                   = "Dark Mode"
 $darkmode.width                  = 205
 $darkmode.height                 = 30
-$darkmode.location               = New-Object System.Drawing.Point(3,176)
+$darkmode.location               = New-Object System.Drawing.Point(3,32)
 $darkmode.Font                   = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $darkmode.Add_Click({
@@ -583,7 +583,7 @@ $lightmode                       = New-Object system.Windows.Forms.Button
 $lightmode.text                  = "Light Mode"
 $lightmode.width                 = 205
 $lightmode.height                = 30
-$lightmode.location              = New-Object System.Drawing.Point(3,210)
+$lightmode.location              = New-Object System.Drawing.Point(3,64)
 $lightmode.Font                  = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $lightmode.Add_Click({
@@ -600,7 +600,7 @@ $performancefx                   = New-Object system.Windows.Forms.Button
 $performancefx.text              = "Performance Visual FX"
 $performancefx.width             = 205
 $performancefx.height            = 30
-$performancefx.location          = New-Object System.Drawing.Point(3,244)
+$performancefx.location          = New-Object System.Drawing.Point(3,100)
 $performancefx.Font              = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $performancefx.Add_Click({
@@ -626,7 +626,7 @@ $appearancefx                    = New-Object system.Windows.Forms.Button
 $appearancefx.text               = "Appearance Visual FX"
 $appearancefx.width              = 205
 $appearancefx.height             = 30
-$appearancefx.location           = New-Object System.Drawing.Point(4,278)
+$appearancefx.location           = New-Object System.Drawing.Point(4,134)
 $appearancefx.Font               = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $appearancefx.Add_Click({
@@ -729,7 +729,7 @@ $securitywindowsupdate           = New-Object system.Windows.Forms.Button
 $securitywindowsupdate.text      = "Security Updates Only"
 $securitywindowsupdate.width     = 300
 $securitywindowsupdate.height    = 30
-$securitywindowsupdate.location  = New-Object System.Drawing.Point(24,142)
+$securitywindowsupdate.location  = New-Object System.Drawing.Point(24,32)
 $securitywindowsupdate.Font      = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
 
 $securitywindowsupdate.Add_Click({
@@ -764,7 +764,7 @@ $windowsupdatefix                = New-Object system.Windows.Forms.Button
 $windowsupdatefix.text           = "Windows Update Reset"
 $windowsupdatefix.width          = 300
 $windowsupdatefix.height         = 30
-$windowsupdatefix.location       = New-Object System.Drawing.Point(25,216)
+$windowsupdatefix.location       = New-Object System.Drawing.Point(25,66)
 $windowsupdatefix.Font           = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
 
 $windowsupdatefix.Add_Click({
@@ -1036,8 +1036,8 @@ $Label10.Font                    = New-Object System.Drawing.Font('Microsoft San
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label1,$Panel3,$ResultText,$Label10))
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord,$cpuZ,$gpuZ,$hwinfotool,$CrystalDiskInfo,$spotify,$Label11,$telegram,$crystaldiskmark,$revouninstaller,$nvcleanstall))
-$Panel2.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$reinstallbloat,$WarningLabel,$appearancefx,$ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower))
+$Panel2.controls.AddRange(@())
+$Panel3.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$reinstallbloat,$WarningLabel,$appearancefx,$ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower))
 $Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix))
-$Panel3.controls.AddRange(@())
 
 [void]$Form.ShowDialog()
