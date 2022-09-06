@@ -311,6 +311,24 @@ $nvcleanstall.Add_Click({
     $ResultText.text = "`r`n" + "Finished Installing NVCleanstall" + "`r`n" + "`r`n" + "Ready for Next Task"
 })
 
+
+# Malwarebytes
+
+$malwarebytes                    = New-Object system.Windows.Forms.Button
+$malwarebytes.text               = "Malwarebytes"
+$malwarebytes.width              = 211
+$malwarebytes.height             = 30
+$malwarebytes.location           = New-Object System.Drawing.Point(3,475)
+$malwarebytes.Font               = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$malwarebytes.Add_Click({
+    Write-Host "Installing Malwarebytes"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing Malwarebytes... Please Wait" 
+    winget install -e Malwarebytes.Malwarebytes | Out-Host
+    Write-Host "Installed Malwarebytes"
+    $ResultText.text = "`r`n" + "Finished Installing Malwarebytes" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
 # ------------------------------------------------------------------------------------------------
 # Web Browsers Menu
 $Label9                          = New-Object system.Windows.Forms.Label
@@ -1034,7 +1052,7 @@ $Label10.Font                    = New-Object System.Drawing.Font('Microsoft San
 # Add the controls to the form
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label1,$Panel3,$ResultText,$Label10))
-$Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$cpuZ,$gpuZ,$hwinfotool,$CrystalDiskInfo,$spotify,$crystaldiskmark,$revouninstaller,$nvcleanstall))
+$Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$cpuZ,$gpuZ,$hwinfotool,$CrystalDiskInfo,$spotify,$crystaldiskmark,$revouninstaller,$nvcleanstall,$malwarebytes))
 $Panel2.controls.AddRange(@($Label11,$discord,$telegram))
 $Panel3.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$reinstallbloat,$WarningLabel,$appearancefx,$ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower))
 $Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix))
