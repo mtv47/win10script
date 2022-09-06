@@ -405,13 +405,6 @@ $etcher.height                   = 30
 $etcher.location                 = New-Object System.Drawing.Point(3,269)
 $etcher.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
-$translucenttb                   = New-Object system.Windows.Forms.Button
-$translucenttb.text              = "Translucent Taskbar"
-$translucenttb.width             = 211
-$translucenttb.height            = 30
-$translucenttb.location          = New-Object System.Drawing.Point(3,236)
-$translucenttb.Font              = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
 $githubdesktop                   = New-Object system.Windows.Forms.Button
 $githubdesktop.text              = "Github Desktop"
 $githubdesktop.width             = 211
@@ -563,7 +556,7 @@ $restorepower.location           = New-Object System.Drawing.Point(4,159)
 $restorepower.Font               = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$PictureBox1,$Label1,$Panel3,$ResultText,$Label10,$Label11))
-$Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$everythingsearch,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$translucenttb,$githubdesktop,$discord))
+$Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$everythingsearch,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord))
 $Panel2.controls.AddRange(@($backgroundapps,$cortana,$actioncenter,$darkmode,$performancefx,$onedrive,$lightmode,$EActionCenter,$ECortana,$RBackgroundApps,$HTrayIcons,$EClipboardHistory,$ELocation,$InstallOneDrive,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx,$STrayIcons,$EHibernation))
 $Panel4.controls.AddRange(@($defaultwindowsupdate,$securitywindowsupdate,$Label16,$Label17,$Label18,$Label19,$windowsupdatefix,$disableupdates,$enableupdates,$Label12))
 $Panel3.controls.AddRange(@($yourphonefix,$ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$NFS,$laptopnumlock,$Virtualization,$oldpower,$restorepower))
@@ -655,14 +648,6 @@ $githubdesktop.Add_Click({
     winget install -e GitHub.GitHubDesktop | Out-Host
     Write-Host "Installed Git and Github Desktop"
     $ResultText.text = "`r`n" + "Finished Installing Git and GitHub Desktop" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
-$translucenttb.Add_Click({
-    Write-Host "Installing Translucent Taskbar"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing Translucent Taskbar... Please Wait" 
-    winget install -e TranslucentTB.TranslucentTB | Out-Host
-    Write-Host "Installed Translucent Taskbar"
-    $ResultText.text = "`r`n" + "Finished Installing Translucent Taskbar" + "`r`n" + "`r`n" + "Ready for Next Task"
 })
 
 $etcher.Add_Click({
