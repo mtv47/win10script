@@ -77,13 +77,6 @@ $7zip.height                     = 30
 $7zip.location                   = New-Object System.Drawing.Point(4,102)
 $7zip.Font                       = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
-$adobereader                     = New-Object system.Windows.Forms.Button
-$adobereader.text                = "Adobe Reader DC"
-$adobereader.width               = 212
-$adobereader.height              = 30
-$adobereader.location            = New-Object System.Drawing.Point(3,865)
-$adobereader.Font                = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
-
 $gchrome                         = New-Object system.Windows.Forms.Button
 $gchrome.text                    = "Google Chrome"
 $gchrome.width                   = 212
@@ -682,14 +675,6 @@ $discord.Add_Click({
     winget install -e Discord.Discord | Out-Host
     if($?) { Write-Host "Installed Discord" }
     $ResultText.text = "`r`n" + "Finished Installing Discord" + "`r`n" + "`r`n" + "Ready for Next Task"
-})
-
-$adobereader.Add_Click({
-    Write-Host "Installing Adobe Reader DC"
-    $ResultText.text = "`r`n" +"`r`n" + "Installing Adobe Reader DC... Please Wait" 
-    winget install -e --id Adobe.Acrobat.Reader.64-bit | Out-Host
-    if($?) { Write-Host "Installed Adobe Reader DC" }
-    $ResultText.text = "`r`n" + "Finished Installing Adobe Reader DC" + "`r`n" + "`r`n" + "Ready for Next Task"
 })
 
 $vlc.Add_Click({
