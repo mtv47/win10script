@@ -250,13 +250,22 @@ $crystaldiskinfo.Add_Click({
 })
 
 
+# ------------------------------------------------------------------------------------------------
+# Communication Menu
+$Label11                         = New-Object System.Windows.Forms.Label
+$Label11.text                    = "Communication"
+$Label11.width                   = 211
+$Label11.height                  = 30
+$Label11.location                = New-Object System.Drawing.Point(3,400)
+$Label11.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
 # Discord
 
 $discord                         = New-Object system.Windows.Forms.Button
 $discord.text                    = "Discord"
 $discord.width                   = 211
 $discord.height                  = 30
-$discord.location                = New-Object System.Drawing.Point(3,368)
+$discord.location                = New-Object System.Drawing.Point(3,434)
 $discord.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $discord.Add_Click({
@@ -265,6 +274,24 @@ $discord.Add_Click({
     winget install -e Discord.Discord | Out-Host
     if($?) { Write-Host "Installed Discord" }
     $ResultText.text = "`r`n" + "Finished Installing Discord" + "`r`n" + "`r`n" + "Ready for Next Task"
+})
+
+
+# Telegram
+
+$telegram                        = New-Object system.Windows.Forms.Button
+$telegram.text                   = "Telegram"
+$telegram.width                  = 211
+$telegram.height                 = 30
+$telegram.location               = New-Object System.Drawing.Point(3,468)
+$telegram.Font                   = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
+
+$telegram.Add_Click({
+    Write-Host "Installing Telegram"
+    $ResultText.text = "`r`n" +"`r`n" + "Installing Telegram... Please Wait" 
+    winget install -e Telegram.TelegramDesktop | Out-Host
+    if($?) { Write-Host "Installed Telegram" }
+    $ResultText.text = "`r`n" + "Finished Installing Telegram" + "`r`n" + "`r`n" + "Ready for Next Task"
 })
 
 
@@ -331,7 +358,6 @@ $gchrome.Add_Click({
     if($?) { Write-Host "Installed Google Chrome" }
     $ResultText.text = "`r`n" + "Finished Installing Google Chrome" + "`r`n" + "`r`n" + "Ready for Next Task"
 })
-
 
 # ------------------------------------------------------------------------------------------------
 # Video and Image Menu
@@ -913,7 +939,7 @@ $windowsupdatefix.Add_Click({
 })
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label1,$Panel3,$ResultText,$Label10))
-$Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord,$cpuZ,$gpuZ,$hwinfotool,$CrystalDiskInfo,$spotify))
+$Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$discord,$cpuZ,$gpuZ,$hwinfotool,$CrystalDiskInfo,$spotify,$Label11,$telegram))
 $Panel2.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$reinstallbloat,$WarningLabel,$Label5,$appearancefx))
 $Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix))
 $Panel3.controls.AddRange(@($ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower))
