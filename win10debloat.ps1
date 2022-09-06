@@ -398,7 +398,7 @@ $githubdesktop                   = New-Object system.Windows.Forms.Button
 $githubdesktop.text              = "Github Desktop"
 $githubdesktop.width             = 211
 $githubdesktop.height            = 30
-$githubdesktop.location          = New-Object System.Drawing.Point(4,823)
+$githubdesktop.location          = New-Object System.Drawing.Point(4,853)
 $githubdesktop.Font              = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $githubdesktop.Add_Click({
@@ -417,7 +417,7 @@ $vscode                          = New-Object system.Windows.Forms.Button
 $vscode.text                     = "VS Code"
 $vscode.width                    = 211
 $vscode.height                   = 30
-$vscode.location                 = New-Object System.Drawing.Point(4,857)
+$vscode.location                 = New-Object System.Drawing.Point(4,907)
 $vscode.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',12)
 
 $vscode.Add_Click({
