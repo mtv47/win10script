@@ -256,7 +256,7 @@ $Label11                         = New-Object System.Windows.Forms.Label
 $Label11.text                    = "Communication"
 $Label11.width                   = 211
 $Label11.height                  = 30
-$Label11.location                = New-Object System.Drawing.Point(57,442)
+$Label11.location                = New-Object System.Drawing.Point(57,445)
 $Label11.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
 
 # Discord
@@ -432,7 +432,7 @@ $Label7.text                     = "Coding Tools"
 $Label7.AutoSize                 = $true
 $Label7.width                    = 25
 $Label7.height                   = 10
-$Label7.location                 = New-Object System.Drawing.Point(60,829)
+$Label7.location                 = New-Object System.Drawing.Point(60,832)
 $Label7.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',10,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
 
 
