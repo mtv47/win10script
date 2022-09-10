@@ -1185,6 +1185,6 @@ $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label1,$Pane
 $Panel1.controls.AddRange(@($brave,$firefox,$7zip,$adobereade,$gchrome,$vlc,$powertoys,$winterminal,$vscode,$Label2,$gimp,$Label7,$Label8,$Label9,$advancedipscanner,$putty,$etcher,$githubdesktop,$cpuZ,$gpuZ,$hwinfotool,$CrystalDiskInfo,$spotify,$crystaldiskmark,$revouninstaller,$nvcleanstall,$malwarebytes))
 $Panel2.controls.AddRange(@($Label11,$discord,$telegram,$Label12,$steam,$origin,$epic,$superposition,$Label13,$libreoffice,$obsidian))
 $Panel3.controls.AddRange(@($darkmode,$performancefx,$lightmode,$removebloat,$reinstallbloat,$WarningLabel,$appearancefx,$ncpa,$oldcontrolpanel,$oldsoundpanel,$oldsystempanel,$oldpower))
-$Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix,$wingetupgrade))
+$Panel4.controls.AddRange(@($securitywindowsupdate,$windowsupdatefix))
 
 [void]$Form.ShowDialog()
